@@ -1,4 +1,4 @@
-import { Application, Assets, Container, Graphics, Rectangle, Sprite, Text, TextStyle, Texture } from "pixi.js";
+import { Application, Assets, Rectangle, Sprite, Text, Texture } from "pixi.js";
 
 import gamePng from './sprites/GAME.png';
 
