@@ -1,4 +1,4 @@
-import { Application, Assets, Rectangle, Sprite, Text, Texture } from "pixi.js";
+import { Application, Assets, Graphics, Rectangle, Sprite, Text, Texture } from "pixi.js";
 
 import gamePng from './sprites/GAME.png';
 
@@ -20,13 +20,21 @@ import gamePng from './sprites/GAME.png';
     gameSprite.x = app.screen.width / 2;
     gameSprite.y = app.screen.height / 2;
 
+    const obj = new Graphics()
+        .roundRect(0, 0, 200, 50, 20)
+        .fill('#000000');
+
+    obj.x = app.screen.width / 2 - 100;
+    obj.y = app.screen.height - 75;
+    app.stage.addChild(obj);
+
     const spinText = new Text({
-        text: '>>> SPIN <<<',
+        text: 'SPIN!',
         style: {
             fontFamily: 'Arial',
-            fontSize: 24,
+            fontSize: 40,
             fontWeight: 900,
-            fill: 'black',
+            fill: 'orange',
             align: 'center',
         }
     });
