@@ -45,7 +45,7 @@ import gamePng from './sprites/GAME.png';
     });
 
     spinText.anchor.set(0.5);
-    spinText.x = app.screen.width / 2;
-    spinText.y = app.screen.height - 50;
-    app.stage.addChild(spinText);
+    spinText.x = spinButton.width / 2;
+    spinText.y = spinButton.height / 2;
+    spinButton.addChild(spinText);
 })();
