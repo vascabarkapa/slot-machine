@@ -1,10 +1,10 @@
 import { Application } from "pixi.js";
 
 (async () => {
-    const BLUE_COLOR = '#1099bb'
+    const COLOR_BLACK = '#000000'
 
     const app = new Application();
-    await app.init({ background: BLUE_COLOR, resizeTo: window });
+    await app.init({ background: COLOR_BLACK, resizeTo: window });
     document.body.appendChild(app.canvas);
 
 })();
