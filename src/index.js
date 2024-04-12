@@ -24,14 +24,14 @@ import gamePng from './sprites/GAME.png';
     gameSprite.y = app.screen.height / 2;
 
     // Spin button
-    const obj = new Graphics()
+    const spinButton = new Graphics()
         .roundRect(0, 0, 200, 50, 20)
         .fill(COLOR_BLACK)
         .stroke({ color: COLOR_ORANGE, width: 2 });
 
-    obj.x = app.screen.width / 2 - 100;
-    obj.y = app.screen.height - 75;
-    app.stage.addChild(obj);
+    spinButton.x = app.screen.width / 2 - 100;
+    spinButton.y = app.screen.height - 75;
+    app.stage.addChild(spinButton);
 
     const spinText = new Text({
         text: 'SPIN!',
