@@ -1,7 +1,7 @@
 {
-  "name": "match3",
-  "version": "1.0.0",
-  "description": "",
+  "name": "slot-machine",
+  "version": "0.0.1",
+  "description": "Slot machine game created with PixiJS",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
