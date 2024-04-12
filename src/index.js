@@ -48,4 +48,18 @@ import gamePng from './sprites/GAME.png';
     spinText.x = spinButton.width / 2;
     spinText.y = spinButton.height / 2;
     spinButton.addChild(spinText);
+
+    ////////////// game //////////////
+
+    spinButton.eventMode = 'static';
+    spinButton.cursor = 'pointer';
+    spinButton.addListener('pointerdown', () => {
+        startSpin();
+    });
+
+    let spinning = false;
+
+    function startSpin() {
+        console.log('Spinning!!!')
+    }
 })();
