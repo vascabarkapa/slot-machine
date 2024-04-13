@@ -278,14 +278,14 @@ import symPng from './sprites/SYM.png';
 
 
 
-    const mask = new Graphics();
+/*     const mask = new Graphics();
     mask.beginFill(0xFFFFFF);
     mask.drawRect(0, 0, 900, 500);
     mask.endFill();
-    //reelContainer.mask = mask;
+    reelContainer.mask = mask;
 
 
-    //reelContainer.addChild(mask);
+    reelContainer.addChild(mask); */
 
 
 
