@@ -277,7 +277,7 @@ import symPng from './sprites/SYM.png';
         .stroke({ color: COLOR_ORANGE, width: 2 });
 
     spinButton.x = app.screen.width / 2 - 100;
-    spinButton.y = app.screen.height - 75;
+    spinButton.y = app.screen.height - 90;
     app.stage.addChild(spinButton);
 
     const spinText = new Text({
