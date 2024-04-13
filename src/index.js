@@ -229,6 +229,47 @@ import symPng from './sprites/SYM.png';
     const sheet = new Spritesheet(symTexture, symData);
     await sheet.parse();
 
+    const reels = [];
+    const reelContainer = new Container();
+
+    for (let i = 0; i < 3; i++) {
+        const rc = new Container();
+
+        rc.x = i * REEL_WIDTH;
+        reelContainer.addChild(rc);
+
+        const reel = {
+            container: rc,
+            symbols: [],
+            position: 0,
+            previousPosition: 0,
+            blur: new BlurFilter()
+        };
+
+        reel.blur.blurX = 0;
+        reel.blur.blurY = 0;
+        rc.filters = [reel.blur];
+
+        for (let j = 0; j < 4; j++) {
+            const symbol = new Sprite(sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)]);
+            symbol.y = j * SYMBOL_SIZE;
+            symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width, SYMBOL_SIZE / symbol.height);
+            symbol.x = Math.round((SYMBOL_SIZE - symbol.width) / 2);
+
+            reel.symbols.push(symbol);
+            rc.addChild(symbol);
+        }
+
+        reels.push(reel);
+    }
+
+    app.stage.addChild(reelContainer);
+
+    const margin = (app.screen.height - SYMBOL_SIZE * 3) / 2;
+
+    reelContainer.y = margin;
+    reelContainer.x = Math.round(app.screen.width / 2 - (REEL_WIDTH * 1.3));
+
     // Spin button
     const spinButton = new Graphics()
         .roundRect(0, 0, 200, 50, 20)
