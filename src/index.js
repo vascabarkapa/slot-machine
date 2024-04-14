@@ -5,7 +5,7 @@ import symPng from './sprites/SYM.png';
 
 (async () => {
     const REEL_WIDTH = 300;
-    const SYMBOL_SIZE = 200;
+    const SYMBOL_SIZE = 170;
     const COLOR_BLACK = '#000000';
     const COLOR_ORANGE = '#FFA500';
 
@@ -253,7 +253,7 @@ import symPng from './sprites/SYM.png';
         for (let j = 0; j < 4; j++) {
             const symbol = new Sprite(sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)]);
             symbol.y = j * SYMBOL_SIZE;
-            symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width, SYMBOL_SIZE / symbol.height);
+            symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width * 1.5, SYMBOL_SIZE / symbol.height * 1.5);
             symbol.x = Math.round((SYMBOL_SIZE - symbol.width) / 2);
 
             reel.symbols.push(symbol);
@@ -324,7 +324,7 @@ import symPng from './sprites/SYM.png';
 
     spinButton.eventMode = 'static';
     spinButton.cursor = 'pointer';
-    spinButton.addListener('pointerdown', () => {
+     spinButton.addListener('pointerdown', () => {
         startSpin();
     });
 
@@ -363,7 +363,7 @@ import symPng from './sprites/SYM.png';
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
                     s.texture = sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)];
-                    s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width, SYMBOL_SIZE / s.texture.height);
+                    s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width * 1.5, SYMBOL_SIZE / s.texture.height * 1.5);
                     s.x = Math.round((SYMBOL_SIZE - s.width) / 2);
                 }
             }
