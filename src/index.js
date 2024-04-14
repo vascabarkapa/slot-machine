@@ -368,6 +368,10 @@ import symPng from './sprites/SYM.png';
                 }
             }
         }
+
+        if(!spinning && (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2])) {
+            console.log('MANJI DOBITAK!!!')
+        }
     });
 
     const tweening = [];
