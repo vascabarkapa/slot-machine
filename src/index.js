@@ -321,6 +321,7 @@ import symPng from './sprites/SYM.png';
     function startSpin() {
         if (spinning) return;
         spinning = true;
+        console.log('STARTED')
 
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
@@ -333,6 +334,7 @@ import symPng from './sprites/SYM.png';
     }
 
     function reelsComplete() {
+        console.log('FINISHED')
         spinning = false;
     }
 
