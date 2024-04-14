@@ -270,29 +270,13 @@ import symPng from './sprites/SYM.png';
     reelContainer.y = margin;
     reelContainer.x = Math.round(app.screen.width / 2 - (REEL_WIDTH * 1.3));
 
-
-
-
-
-
-
-
-
-/*     const mask = new Graphics();
+    const mask = new Graphics();
     mask.beginFill(0xFFFFFF);
-    mask.drawRect(0, 0, 900, 500);
+    mask.drawRect(-20, -20, 900, 495);
     mask.endFill();
+
     reelContainer.mask = mask;
-
-
-    reelContainer.addChild(mask); */
-
-
-
-
-
-
-
+    reelContainer.addChild(mask);
 
     // Spin button
     const spinButton = new Graphics()
