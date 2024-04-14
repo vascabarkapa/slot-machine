@@ -274,10 +274,7 @@ import symPng from './sprites/SYM.png';
     reelContainer.x = Math.round(app.screen.width / 2 - (REEL_WIDTH * 1.3));
 
     // Mask
-    const mask = new Graphics();
-    mask.beginFill(0xFFFFFF);
-    mask.drawRect(-20, -20, 900, 495);
-    mask.endFill();
+    const mask = new Graphics().fill(0xFFFFFF).rect(-20, -20, 900, 495).fill();
 
     reelContainer.mask = mask;
     reelContainer.addChild(mask);
