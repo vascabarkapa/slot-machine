@@ -359,7 +359,7 @@ import symPng from './sprites/SYM.png';
                 const s = r.symbols[j];
                 const prevY = s.y;
 
-                s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE;
+                s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
                     s.texture = sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)];
