@@ -26,6 +26,7 @@ import symPng from './sprites/SYM.png';
     gameSprite.x = app.screen.width / 2;
     gameSprite.y = app.screen.height / 2;
 
+    // Symbols Data
     const symData = {
         frames: {
             P_1: {
@@ -223,6 +224,7 @@ import symPng from './sprites/SYM.png';
         }
     };
 
+    // Symbol sheet
     const symAsset = await Assets.load(symPng);
     const symTexture = new Texture(symAsset);
 
@@ -232,6 +234,7 @@ import symPng from './sprites/SYM.png';
     const reels = [];
     const reelContainer = new Container();
 
+    // Reels
     for (let i = 0; i < 3; i++) {
         const rc = new Container();
 
@@ -270,6 +273,7 @@ import symPng from './sprites/SYM.png';
     reelContainer.y = margin;
     reelContainer.x = Math.round(app.screen.width / 2 - (REEL_WIDTH * 1.3));
 
+    // Mask
     const mask = new Graphics();
     mask.beginFill(0xFFFFFF);
     mask.drawRect(-20, -20, 900, 495);
