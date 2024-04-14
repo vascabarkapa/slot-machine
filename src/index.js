@@ -244,6 +244,7 @@ import symPng from './sprites/SYM.png';
         const reel = {
             container: rc,
             symbols: [],
+            tags: [],
             position: 0,
             previousPosition: 0,
             blur: new BlurFilter()
@@ -254,11 +255,14 @@ import symPng from './sprites/SYM.png';
         rc.filters = [reel.blur];
 
         for (let j = 0; j < 4; j++) {
-            const symbol = new Sprite(sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)]);
+            const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+            const symbol = new Sprite(sheet.textures[tag]);
+
             symbol.y = j * SYMBOL_SIZE;
             symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width * 1.5, SYMBOL_SIZE / symbol.height * 1.5);
             symbol.x = Math.round((SYMBOL_SIZE - symbol.width) / 2);
 
+            reel.tags.push(tag);
             reel.symbols.push(symbol);
             rc.addChild(symbol);
         }
@@ -351,14 +355,17 @@ import symPng from './sprites/SYM.png';
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    s.texture = sheet.textures['P_' + (Math.floor(Math.random() * 9) + 1)];
+                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+                    s.texture = sheet.textures[tag];
+
+                    r.tags.unshift(tag);
+                    if(r.tags.length > 4) {
+                        r.tags.pop();
+                    }
+
                     s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width * 1.5, SYMBOL_SIZE / s.texture.height * 1.5);
                     s.x = Math.round((SYMBOL_SIZE - s.width) / 2);
                 }
-            }
-
-            if(clicked && !spinning) {
-                console.log('CHECK');
             }
         }
     });
