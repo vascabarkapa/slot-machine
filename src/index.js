@@ -324,9 +324,9 @@ import symPng from './sprites/SYM.png';
 
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
-            const extra = Math.floor(Math.random() * 3);
-            const target = r.position + 10 + i * 5 + extra;
-            const time = 2500 + i * 600 + extra * 600;
+            const extra = i;
+            const target = r.position + 50 + i * 5 + extra;
+            const time = 1500 + i * 600 + extra * 600;
 
             tweenTo(r, 'position', target, time, backout(0.5), null, i === reels.length - 1 ? reelsComplete : null);
         }
