@@ -313,11 +313,13 @@ import symPng from './sprites/SYM.png';
         startSpin();
     });
 
+    let clicked = false;
     let spinning = false;
 
     function startSpin() {
         if (spinning) return;
         spinning = true;
+        clicked = true;
         console.log('STARTED')
 
         for (let i = 0; i < reels.length; i++) {
@@ -353,6 +355,10 @@ import symPng from './sprites/SYM.png';
                     s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width * 1.5, SYMBOL_SIZE / s.texture.height * 1.5);
                     s.x = Math.round((SYMBOL_SIZE - s.width) / 2);
                 }
+            }
+
+            if(clicked && !spinning) {
+                console.log('CHECK');
             }
         }
     });
