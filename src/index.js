@@ -507,7 +507,7 @@ import p9Png from './sprites/P_9.png';
         if (clicked && !spinning) {
             if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
-            } else if (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2]) {
+            } else if (reels[0].tags[2] == reels[1].tags[2]) {
                 console.log(">>>>> MANJI DOBITAK <<<<<");
             } else {
                 console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
