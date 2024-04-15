@@ -324,7 +324,7 @@ import symPng from './sprites/SYM.png';
         if (spinning) return;
         spinning = true;
         clicked = true;
-        console.log('STARTED')
+        console.log('STARTED SPINNING')
 
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
@@ -337,7 +337,7 @@ import symPng from './sprites/SYM.png';
     }
 
     function reelsComplete() {
-        console.log('FINISHED')
+        console.log('FINISHED SPINNING')
         spinning = false;
     }
 
@@ -369,8 +369,14 @@ import symPng from './sprites/SYM.png';
             }
         }
 
-        if(!spinning && (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2])) {
-            console.log('MANJI DOBITAK!!!')
+        if(!spinning) {
+            if(reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
+                console.log(">>>>> VEĆI DOBITAK <<<<<");
+            } else if (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2]) {
+                console.log(">>>>> MANJI DOBITAK <<<<<");
+            } else {
+                console.log("NEMA DOBITKA. POKUŠAJ PONOVO!")
+            }
         }
     });
 
