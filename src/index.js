@@ -498,17 +498,104 @@ import p9Png from './sprites/P_9.png';
             }
         }
 
-/*         setInterval(() => {
-            // Ovdje možeš zamijeniti "Nešto što želiš ispisati" sa svojim stringom
-            console.log("Nešto što želiš ispisati");
-        }, 1000); */
+        /*         setInterval(() => {
+                    // Ovdje možeš zamijeniti "Nešto što želiš ispisati" sa svojim stringom
+                    console.log("Nešto što želiš ispisati");
+                }, 1000); */
 
 
         if (clicked && !spinning) {
             if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
+
+                switch (reels[0].tags[2]) {
+                    case 'P_1':
+                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        reels[2].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        break;
+                    case 'P_2':
+                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        reels[2].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        break;
+                    case 'P_3':
+                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        reels[2].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        break;
+                    case 'P_4':
+                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        reels[2].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        break;
+                    case 'P_5':
+                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        reels[2].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        break;
+                    case 'P_6':
+                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        reels[2].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        break;
+                    case 'P_7':
+                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        reels[2].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        break;
+                    case 'P_8':
+                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        reels[2].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        break;
+                    case 'P_9':
+                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        reels[2].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        break;
+                }
             } else if (reels[0].tags[2] == reels[1].tags[2]) {
                 console.log(">>>>> MANJI DOBITAK <<<<<");
+
+                switch (reels[0].tags[2]) {
+                    case 'P_1':
+                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        break;
+                    case 'P_2':
+                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        break;
+                    case 'P_3':
+                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        break;
+                    case 'P_4':
+                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        break;
+                    case 'P_5':
+                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        break;
+                    case 'P_6':
+                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        break;
+                    case 'P_7':
+                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        break;
+                    case 'P_8':
+                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        break;
+                    case 'P_9':
+                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        break;
+                }
             } else {
                 console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
             }
