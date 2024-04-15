@@ -2,6 +2,15 @@ import { Application, Assets, BlurFilter, Container, Graphics, Rectangle, Sprite
 
 import gamePng from './sprites/GAME.png';
 import symPng from './sprites/SYM.png';
+import p1Png from './sprites/P_1.png';
+import p2Png from './sprites/P_2.png';
+import p3Png from './sprites/P_3.png';
+import p4Png from './sprites/P_4.png';
+import p5Png from './sprites/P_5.png';
+import p6Png from './sprites/P_6.png';
+import p7Png from './sprites/P_7.png';
+import p8Png from './sprites/P_8.png';
+import p9Png from './sprites/P_9.png';
 
 (async () => {
     const REEL_WIDTH = 300;
@@ -231,6 +240,126 @@ import symPng from './sprites/SYM.png';
     const sheet = new Spritesheet(symTexture, symData);
     await sheet.parse();
 
+    const pData = {
+        frames: {
+            P_1_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_1_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_1.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:c41ec57f7d52e1f75de41de1256e791e:8e4bb469f69dd094586553143bdd2ff8:efc1861a7d39cbad229d9cbb8d943c2f$"
+        }
+    };
+
+    // P1 sheet
+    const p1Asset = await Assets.load(p1Png);
+    const p1Texture = new Texture(p1Asset);
+
+    const p1Sheet = new Spritesheet(p1Texture, pData);
+    await p1Sheet.parse();
+
+    // P2 sheet
+    const p2Asset = await Assets.load(p2Png);
+    const p2Texture = new Texture(p2Asset);
+
+    const p2Sheet = new Spritesheet(p2Texture, pData);
+    await p2Sheet.parse();
+
+    // P3 sheet
+    const p3Asset = await Assets.load(p3Png);
+    const p3Texture = new Texture(p3Asset);
+
+    const p3Sheet = new Spritesheet(p3Texture, pData);
+    await p3Sheet.parse();
+
+    // P4 sheet
+    const p4Asset = await Assets.load(p4Png);
+    const p4Texture = new Texture(p4Asset);
+
+    const p4Sheet = new Spritesheet(p4Texture, pData);
+    await p4Sheet.parse();
+
+    // P5 sheet
+    const p5Asset = await Assets.load(p5Png);
+    const p5Texture = new Texture(p5Asset);
+
+    const p5Sheet = new Spritesheet(p5Texture, pData);
+    await p5Sheet.parse();
+
+    // P6 sheet
+    const p6Asset = await Assets.load(p6Png);
+    const p6Texture = new Texture(p6Asset);
+
+    const p6Sheet = new Spritesheet(p6Texture, pData);
+    await p6Sheet.parse();
+
+    // P7 sheet
+    const p7Asset = await Assets.load(p7Png);
+    const p7Texture = new Texture(p7Asset);
+
+    const p7Sheet = new Spritesheet(p7Texture, pData);
+    await p7Sheet.parse();
+
+    // P8 sheet
+    const p8Asset = await Assets.load(p8Png);
+    const p8Texture = new Texture(p8Asset);
+
+    const p8Sheet = new Spritesheet(p8Texture, pData);
+    await p8Sheet.parse();
+
+    // P9 sheet
+    const p9Asset = await Assets.load(p9Png);
+    const p9Texture = new Texture(p9Asset);
+
+    const p9Sheet = new Spritesheet(p9Texture, pData);
+    await p9Sheet.parse();
+
     const reels = [];
     const reelContainer = new Container();
 
@@ -313,7 +442,7 @@ import symPng from './sprites/SYM.png';
 
     spinButton.eventMode = 'static';
     spinButton.cursor = 'pointer';
-     spinButton.addListener('pointerdown', () => {
+    spinButton.addListener('pointerdown', () => {
         startSpin();
     });
 
@@ -359,7 +488,7 @@ import symPng from './sprites/SYM.png';
                     s.texture = sheet.textures[tag];
 
                     r.tags.unshift(tag);
-                    if(r.tags.length > 4) {
+                    if (r.tags.length > 4) {
                         r.tags.pop();
                     }
 
@@ -369,8 +498,14 @@ import symPng from './sprites/SYM.png';
             }
         }
 
-        if(!spinning) {
-            if(reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
+/*         setInterval(() => {
+            // Ovdje možeš zamijeniti "Nešto što želiš ispisati" sa svojim stringom
+            console.log("Nešto što želiš ispisati");
+        }, 1000); */
+
+
+        if (clicked && !spinning) {
+            if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
             } else if (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> MANJI DOBITAK <<<<<");
