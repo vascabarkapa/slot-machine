@@ -375,7 +375,7 @@ import symPng from './sprites/SYM.png';
             } else if (reels[0].tags[2] == reels[1].tags[2] || reels[0].tags[2] == reels[2].tags[2] || reels[1].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> MANJI DOBITAK <<<<<");
             } else {
-                console.log("NEMA DOBITKA. POKUŠAJ PONOVO!")
+                console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
             }
         }
     });
