@@ -983,7 +983,7 @@ import p9Png from './sprites/P_9.png';
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    const tag = 'P_' + (Math.floor(Math.random() * 2) + 1);
+                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
                     s.texture = sheet.textures[tag];
                     r.tags[j] = tag;
 
