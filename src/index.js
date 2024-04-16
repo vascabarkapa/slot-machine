@@ -870,7 +870,7 @@ import p9Png from './sprites/P_9.png';
 
     // Spin button
     const spinButton = new Graphics()
-        .roundRect(0, 0, 200, 50, 20)
+        .roundRect(0, 0, 220, 60, 20)
         .fill(COLOR_BLACK)
         .stroke({ color: COLOR_ORANGE, width: 2 });
 
@@ -882,7 +882,7 @@ import p9Png from './sprites/P_9.png';
         text: 'SPIN!',
         style: {
             fontFamily: 'Arial',
-            fontSize: 40,
+            fontSize: 45,
             fontWeight: 900,
             fill: COLOR_ORANGE,
             align: 'center',
@@ -956,7 +956,7 @@ import p9Png from './sprites/P_9.png';
         if (clicked && !spinning) {
             const currentTime = Date.now();
 
-            if (currentTime - lastLogTime >= 500) {
+            if (currentTime - lastLogTime >= 250) {
                 lastLogTime = currentTime;
                 anim = !anim;
             }
