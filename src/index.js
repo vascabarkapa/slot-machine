@@ -874,9 +874,9 @@ import p9Png from './sprites/P_9.png';
         .fill(COLOR_BLACK)
         .stroke({ color: COLOR_ORANGE, width: 2 });
 
-    spinButton.x = app.screen.width / 2 - 100;
-    spinButton.y = app.screen.height - 90;
-    app.stage.addChild(spinButton);
+    spinButton.x = -spinButton.width / 2;
+    spinButton.y = gameSprite.height / 2;
+    gameSprite.addChild(spinButton);
 
     const spinText = new Text({
         text: 'SPIN!',
