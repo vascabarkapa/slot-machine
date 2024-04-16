@@ -914,7 +914,7 @@ import p9Png from './sprites/P_9.png';
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
             const extra = i;
-            const target = r.position + 50 + i * 5 + extra;
+            const target = Math.ceil((r.position + 50 + i * 5 + extra) / 100) * 100;;
             const time = 1500 + i * 600 + extra * 600;
 
             tweenTo(r, 'position', target, time, backout(0.5), null, i === reels.length - 1 ? reelsComplete : null);
