@@ -240,7 +240,7 @@ import p9Png from './sprites/P_9.png';
     const sheet = new Spritesheet(symTexture, symData);
     await sheet.parse();
 
-    const pData = {
+    const p1Data = {
         frames: {
             P_1_A: {
                 frame: {
@@ -297,67 +297,523 @@ import p9Png from './sprites/P_9.png';
         }
     };
 
+    const p2Data = {
+        frames: {
+            P_2_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_2_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_2.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:f540941412c0ab5346ba61eac288b5c0:a6953950895288fd49bfdb217f63f761:e44ed144a51fd15f60f6e6067e096191$"
+        }
+    };
+
+    const p3Data = {
+        frames: {
+            P_3_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_3_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_3.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:9f20e77cbeef69f79ec7370166f31ed0:9547c108f7d8e0161bbd5b5557b5e378:0eaf7d1f32464656ecc6a2893bfca6aa$"
+        }
+    };
+
+    const p4Data = {
+        frames: {
+            P_4_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_4_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_4.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:7b23125dbe2790ce8b6bcbb29e2c2b4b:fb748386d7f6600440ff1d1ded3a120f:ea6e1a747942f484354e21ce43959286$"
+        }
+    };
+
+    const p5Data = {
+        frames: {
+            P_5_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_5_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_5.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:739e5d7b6db104410a1efd0b82bab45a:75b05dc0af7e92a6cf0ab84f6aac6120:bd84e902a7ad050d12ff4ef83c603cca$"
+        }
+    };
+
+    const p6Data = {
+        frames: {
+            P_6_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_6_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_6.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:c88cc515b3260e67ced03e43030af78d:1f95d85d9c6fe4d76ac8733ccda76b63:794195ce455fe6eb67f52254bcbaf51c$"
+        }
+    };
+
+    const p7Data = {
+        frames: {
+            P_7_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_7_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_7.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:602c32e9682e73917effbd3c2987ac19:295a8677042f1765448eeb9fccb1f726:cc3e57000f17b25349f9443aa879321b$"
+        }
+    };
+
+    const p8Data = {
+        frames: {
+            P_8_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_8_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_8.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:9d409ec9a955f65d2090128725316cf9:8f5251f680bb4e22e5e87a000bd4ac8d:57745784a94b2700da3ca54e9631dcf8$"
+        }
+    };
+
+    const p9Data = {
+        frames: {
+            P_9_A: {
+                frame: {
+                    x: 234,
+                    y: 1,
+                    w: 177,
+                    h: 176
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 95,
+                    y: 23,
+                    w: 177,
+                    h: 176
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            },
+            P_9_B: {
+                frame: {
+                    x: 1,
+                    y: 1,
+                    w: 231,
+                    h: 222
+                },
+                rotated: false,
+                trimmed: true,
+                spriteSourceSize: {
+                    x: 69,
+                    y: 0,
+                    w: 231,
+                    h: 222
+                },
+                sourceSize: {
+                    w: 367,
+                    h: 222
+                }
+            }
+        },
+        meta: {
+            app: "https://www.codeandweb.com/texturepacker",
+            version: "1.0",
+            image: "P_9.png",
+            format: "RGBA8888",
+            size: {
+                w: 512,
+                h: 512
+            },
+            scale: "1",
+            smartupdate: "$TexturePacker:SmartUpdate:048a34ef81cd7d05c5b7cef5246d7d47:6b11d863ecc0abfcfde1cc06586dd8ee:0fec878b084c8a102f57fdfbdb7c24dd$"
+        }
+    };
+
     // P1 sheet
     const p1Asset = await Assets.load(p1Png);
     const p1Texture = new Texture(p1Asset);
 
-    const p1Sheet = new Spritesheet(p1Texture, pData);
+    const p1Sheet = new Spritesheet(p1Texture, p1Data);
     await p1Sheet.parse();
 
     // P2 sheet
     const p2Asset = await Assets.load(p2Png);
     const p2Texture = new Texture(p2Asset);
 
-    const p2Sheet = new Spritesheet(p2Texture, pData);
+    const p2Sheet = new Spritesheet(p2Texture, p2Data);
     await p2Sheet.parse();
 
     // P3 sheet
     const p3Asset = await Assets.load(p3Png);
     const p3Texture = new Texture(p3Asset);
 
-    const p3Sheet = new Spritesheet(p3Texture, pData);
+    const p3Sheet = new Spritesheet(p3Texture, p3Data);
     await p3Sheet.parse();
 
     // P4 sheet
     const p4Asset = await Assets.load(p4Png);
     const p4Texture = new Texture(p4Asset);
 
-    const p4Sheet = new Spritesheet(p4Texture, pData);
+    const p4Sheet = new Spritesheet(p4Texture, p4Data);
     await p4Sheet.parse();
 
     // P5 sheet
     const p5Asset = await Assets.load(p5Png);
     const p5Texture = new Texture(p5Asset);
 
-    const p5Sheet = new Spritesheet(p5Texture, pData);
+    const p5Sheet = new Spritesheet(p5Texture, p5Data);
     await p5Sheet.parse();
 
     // P6 sheet
     const p6Asset = await Assets.load(p6Png);
     const p6Texture = new Texture(p6Asset);
 
-    const p6Sheet = new Spritesheet(p6Texture, pData);
+    const p6Sheet = new Spritesheet(p6Texture, p6Data);
     await p6Sheet.parse();
 
     // P7 sheet
     const p7Asset = await Assets.load(p7Png);
     const p7Texture = new Texture(p7Asset);
 
-    const p7Sheet = new Spritesheet(p7Texture, pData);
+    const p7Sheet = new Spritesheet(p7Texture, p7Data);
     await p7Sheet.parse();
 
     // P8 sheet
     const p8Asset = await Assets.load(p8Png);
     const p8Texture = new Texture(p8Asset);
 
-    const p8Sheet = new Spritesheet(p8Texture, pData);
+    const p8Sheet = new Spritesheet(p8Texture, p8Data);
     await p8Sheet.parse();
 
     // P9 sheet
     const p9Asset = await Assets.load(p9Png);
     const p9Texture = new Texture(p9Asset);
 
-    const p9Sheet = new Spritesheet(p9Texture, pData);
+    const p9Sheet = new Spritesheet(p9Texture, p9Data);
     await p9Sheet.parse();
 
     const reels = [];
@@ -486,11 +942,7 @@ import p9Png from './sprites/P_9.png';
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
                     const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
                     s.texture = sheet.textures[tag];
-
-                    r.tags.unshift(tag);
-                    if (r.tags.length > 4) {
-                        r.tags.pop();
-                    }
+                    r.tags[j] = tag;
 
                     s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width * 1.5, SYMBOL_SIZE / s.texture.height * 1.5);
                     s.x = Math.round((SYMBOL_SIZE - s.width) / 2);
@@ -498,102 +950,96 @@ import p9Png from './sprites/P_9.png';
             }
         }
 
-        /*         setInterval(() => {
-                    // Ovdje možeš zamijeniti "Nešto što želiš ispisati" sa svojim stringom
-                    console.log("Nešto što želiš ispisati");
-                }, 1000); */
-
-
         if (clicked && !spinning) {
             if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
 
                 switch (reels[0].tags[2]) {
                     case 'P_1':
-                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
-                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
-                        reels[2].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        reels[2].symbols[2].texture = p1Sheet.textures['P_1_B'];
                         break;
                     case 'P_2':
-                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
-                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
-                        reels[2].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        reels[2].symbols[2].texture = p2Sheet.textures['P_2_B'];
                         break;
                     case 'P_3':
-                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
-                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
-                        reels[2].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        reels[2].symbols[2].texture = p3Sheet.textures['P_3_B'];
                         break;
                     case 'P_4':
-                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
-                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
-                        reels[2].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        reels[2].symbols[2].texture = p4Sheet.textures['P_4_B'];
                         break;
                     case 'P_5':
-                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
-                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
-                        reels[2].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        reels[2].symbols[2].texture = p5Sheet.textures['P_5_B'];
                         break;
                     case 'P_6':
-                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
-                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
-                        reels[2].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        reels[2].symbols[2].texture = p6Sheet.textures['P_6_B'];
                         break;
                     case 'P_7':
-                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
-                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
-                        reels[2].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        reels[2].symbols[2].texture = p7Sheet.textures['P_7_B'];
                         break;
                     case 'P_8':
-                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
-                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
-                        reels[2].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        reels[2].symbols[2].texture = p8Sheet.textures['P_8_B'];
                         break;
                     case 'P_9':
-                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
-                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
-                        reels[2].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        reels[2].symbols[2].texture = p9Sheet.textures['P_9_B'];
                         break;
                 }
             } else if (reels[0].tags[2] == reels[1].tags[2]) {
-                console.log(">>>>> MANJI DOBITAK <<<<<");
+                console.log(">>>>> MANJI DOBITAK <<<<<  ");
 
                 switch (reels[0].tags[2]) {
                     case 'P_1':
-                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
-                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
                         break;
                     case 'P_2':
-                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
-                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
                         break;
                     case 'P_3':
-                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
-                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
                         break;
                     case 'P_4':
-                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
-                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
                         break;
                     case 'P_5':
-                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
-                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
                         break;
                     case 'P_6':
-                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
-                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
                         break;
                     case 'P_7':
-                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
-                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
                         break;
                     case 'P_8':
-                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
-                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
                         break;
                     case 'P_9':
-                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
-                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
                         break;
                 }
             } else {
