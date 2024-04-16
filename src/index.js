@@ -894,6 +894,42 @@ import p9Png from './sprites/P_9.png';
     spinText.y = spinButton.height / 2;
     spinButton.addChild(spinText);
 
+    // Low win text
+    const lowWinText = new Text({
+        text: 'YOU WON 50$!',
+        style: {
+            fontFamily: 'Arial',
+            fontSize: 45,
+            fontWeight: 900,
+            fill: COLOR_ORANGE,
+            align: 'center',
+        }
+    });
+
+    lowWinText.anchor.set(0.5);
+    lowWinText.x = 0;
+    lowWinText.y = -lowWinText.height * 8.5;
+    gameSprite.addChild(lowWinText);
+    lowWinText.visible = false;
+
+    // Big win text
+    const bigWinText = new Text({
+        text: 'YOU WON 100$!',
+        style: {
+            fontFamily: 'Arial',
+            fontSize: 45,
+            fontWeight: 900,
+            fill: COLOR_ORANGE,
+            align: 'center',
+        }
+    });
+
+    bigWinText.anchor.set(0.5);
+    bigWinText.x = 0;
+    bigWinText.y = -bigWinText.height * 8.5;
+    gameSprite.addChild(bigWinText);
+    bigWinText.visible = false;
+
     ////////////// game //////////////
 
     spinButton.eventMode = 'static';
@@ -909,7 +945,11 @@ import p9Png from './sprites/P_9.png';
         if (spinning) return;
         spinning = true;
         clicked = true;
-        console.log('STARTED SPINNING')
+        
+        lowWinText.visible = false;
+        bigWinText.visible = false;
+
+        console.log('STARTED SPINNING');
 
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
@@ -963,7 +1003,8 @@ import p9Png from './sprites/P_9.png';
 
             if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
-
+                bigWinText.visible = true;
+                
                 switch (reels[0].tags[2]) {
                     case 'P_1':
                         if (anim) {
@@ -1076,6 +1117,7 @@ import p9Png from './sprites/P_9.png';
                 }
             } else if (reels[0].tags[2] == reels[1].tags[2]) {
                 console.log(">>>>> MANJI DOBITAK <<<<<  ");
+                lowWinText.visible = true;
 
                 switch (reels[0].tags[2]) {
                     case 'P_1':
