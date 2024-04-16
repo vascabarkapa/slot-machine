@@ -926,6 +926,9 @@ import p9Png from './sprites/P_9.png';
         spinning = false;
     }
 
+    let lastLogTime = Date.now();
+    let anim = false;
+
     app.ticker.add(() => {
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
@@ -940,7 +943,7 @@ import p9Png from './sprites/P_9.png';
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+                    const tag = 'P_' + (Math.floor(Math.random() * 2) + 1);
                     s.texture = sheet.textures[tag];
                     r.tags[j] = tag;
 
@@ -951,54 +954,124 @@ import p9Png from './sprites/P_9.png';
         }
 
         if (clicked && !spinning) {
+            const currentTime = Date.now();
+
+            if (currentTime - lastLogTime >= 500) {
+                lastLogTime = currentTime;
+                anim = !anim;
+            }
+
             if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
 
                 switch (reels[0].tags[2]) {
                     case 'P_1':
-                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
-                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
-                        reels[2].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                            reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                            reels[2].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                            reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                            reels[2].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        }
+
                         break;
                     case 'P_2':
-                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
-                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
-                        reels[2].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                            reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                            reels[2].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                            reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                            reels[2].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        }
+
                         break;
                     case 'P_3':
-                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
-                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
-                        reels[2].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                            reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                            reels[2].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                            reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                            reels[2].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        }
+
                         break;
                     case 'P_4':
-                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
-                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
-                        reels[2].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                            reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                            reels[2].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                            reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                            reels[2].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        }
+
                         break;
                     case 'P_5':
-                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
-                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
-                        reels[2].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                            reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                            reels[2].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                            reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                            reels[2].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        }
+
                         break;
                     case 'P_6':
-                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
-                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
-                        reels[2].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                            reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                            reels[2].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                            reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                            reels[2].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        }
+
                         break;
                     case 'P_7':
-                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
-                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
-                        reels[2].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                            reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                            reels[2].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                            reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                            reels[2].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        }
+
                         break;
                     case 'P_8':
-                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
-                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
-                        reels[2].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                            reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                            reels[2].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                            reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                            reels[2].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        }
+
                         break;
                     case 'P_9':
-                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
-                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
-                        reels[2].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                            reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                            reels[2].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                            reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                            reels[2].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        }
+
                         break;
                 }
             } else if (reels[0].tags[2] == reels[1].tags[2]) {
@@ -1006,40 +1079,94 @@ import p9Png from './sprites/P_9.png';
 
                 switch (reels[0].tags[2]) {
                     case 'P_1':
-                        reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
-                        reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                            reels[1].symbols[2].texture = p1Sheet.textures['P_1_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                            reels[1].symbols[2].texture = p1Sheet.textures['P_1_A'];
+                        }
+
                         break;
                     case 'P_2':
-                        reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
-                        reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                            reels[1].symbols[2].texture = p2Sheet.textures['P_2_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                            reels[1].symbols[2].texture = p2Sheet.textures['P_2_A'];
+                        }
+
                         break;
                     case 'P_3':
-                        reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
-                        reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                            reels[1].symbols[2].texture = p3Sheet.textures['P_3_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                            reels[1].symbols[2].texture = p3Sheet.textures['P_3_A'];
+                        }
+
                         break;
                     case 'P_4':
-                        reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
-                        reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                            reels[1].symbols[2].texture = p4Sheet.textures['P_4_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                            reels[1].symbols[2].texture = p4Sheet.textures['P_4_A'];
+                        }
+
                         break;
                     case 'P_5':
-                        reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
-                        reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                            reels[1].symbols[2].texture = p5Sheet.textures['P_5_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                            reels[1].symbols[2].texture = p5Sheet.textures['P_5_A'];
+                        }
+
                         break;
                     case 'P_6':
-                        reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
-                        reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                            reels[1].symbols[2].texture = p6Sheet.textures['P_6_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                            reels[1].symbols[2].texture = p6Sheet.textures['P_6_A'];
+                        }
+
                         break;
                     case 'P_7':
-                        reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
-                        reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                            reels[1].symbols[2].texture = p7Sheet.textures['P_7_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                            reels[1].symbols[2].texture = p7Sheet.textures['P_7_A'];
+                        }
+
                         break;
                     case 'P_8':
-                        reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
-                        reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                            reels[1].symbols[2].texture = p8Sheet.textures['P_8_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                            reels[1].symbols[2].texture = p8Sheet.textures['P_8_A'];
+                        }
+
                         break;
                     case 'P_9':
-                        reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
-                        reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        if (anim) {
+                            reels[0].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                            reels[1].symbols[2].texture = p9Sheet.textures['P_9_B'];
+                        } else {
+                            reels[0].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                            reels[1].symbols[2].texture = p9Sheet.textures['P_9_A'];
+                        }
+
                         break;
                 }
             } else {
