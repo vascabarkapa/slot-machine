@@ -1,4 +1,4 @@
-import { Application, Assets, BlurFilter, Container, Graphics, Rectangle, Sprite, Spritesheet, Text, Texture } from "pixi.js";
+import { Application, Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Texture } from "pixi.js";
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audios/slot.mp3';
