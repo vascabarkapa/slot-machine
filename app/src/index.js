@@ -12,13 +12,9 @@ import p7Png from './../assets/images/P_7.png';
 import p8Png from './../assets/images/P_8.png';
 import p9Png from './../assets/images/P_9.png';
 
-(async () => {
-    const REEL_WIDTH = 300;
-    const SYMBOL_SIZE = 170;
-    const COLOR_BLACK = '#000000';
-    const COLOR_ORANGE = '#FFA500';
-    const API_URL = 'http://localhost:5000';
+import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 
+(async () => {
     // Init App
     const app = new Application();
     await app.init({ background: COLOR_BLACK, resizeTo: window });
