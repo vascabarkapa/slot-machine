@@ -250,226 +250,35 @@ import p9Png from './../assets/images/P_9.png';
 
         if (clicked && !spinning) {
             const currentTime = Date.now();
+            const sameTags = reels[0].tags[2] == reels[1].tags[2];
+            const allSameTags = sameTags && reels[0].tags[2] == reels[2].tags[2];
+            const tagIndex = parseInt(reels[0].tags[2].split('_')[1]) - 1;
 
             if (currentTime - lastLogTime >= 250) {
                 lastLogTime = currentTime;
                 anim = !anim;
             }
-
-            if (reels[0].tags[2] == reels[1].tags[2] && reels[0].tags[2] == reels[2].tags[2]) {
+        
+            if (allSameTags) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
                 bigWinText.visible = true;
-
-                switch (reels[0].tags[2]) {
-                    case 'P_1':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[0].textures['P_1_B'];
-                            reels[1].symbols[2].texture = winSheets[0].textures['P_1_B'];
-                            reels[2].symbols[2].texture = winSheets[0].textures['P_1_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[0].textures['P_1_A'];
-                            reels[1].symbols[2].texture = winSheets[0].textures['P_1_A'];
-                            reels[2].symbols[2].texture = winSheets[0].textures['P_1_A'];
-                        }
-
-                        break;
-                    case 'P_2':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[1].textures['P_2_B'];
-                            reels[1].symbols[2].texture = winSheets[1].textures['P_2_B'];
-                            reels[2].symbols[2].texture = winSheets[1].textures['P_2_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[1].textures['P_2_A'];
-                            reels[1].symbols[2].texture = winSheets[1].textures['P_2_A'];
-                            reels[2].symbols[2].texture = winSheets[1].textures['P_2_A'];
-                        }
-
-                        break;
-                    case 'P_3':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[2].textures['P_3_B'];
-                            reels[1].symbols[2].texture = winSheets[2].textures['P_3_B'];
-                            reels[2].symbols[2].texture = winSheets[2].textures['P_3_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[2].textures['P_3_A'];
-                            reels[1].symbols[2].texture = winSheets[2].textures['P_3_A'];
-                            reels[2].symbols[2].texture = winSheets[2].textures['P_3_A'];
-                        }
-
-                        break;
-                    case 'P_4':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[3].textures['P_4_B'];
-                            reels[1].symbols[2].texture = winSheets[3].textures['P_4_B'];
-                            reels[2].symbols[2].texture = winSheets[3].textures['P_4_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[3].textures['P_4_A'];
-                            reels[1].symbols[2].texture = winSheets[3].textures['P_4_A'];
-                            reels[2].symbols[2].texture = winSheets[3].textures['P_4_A'];
-                        }
-
-                        break;
-                    case 'P_5':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[4].textures['P_5_B'];
-                            reels[1].symbols[2].texture = winSheets[4].textures['P_5_B'];
-                            reels[2].symbols[2].texture = winSheets[4].textures['P_5_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[4].textures['P_5_A'];
-                            reels[1].symbols[2].texture = winSheets[4].textures['P_5_A'];
-                            reels[2].symbols[2].texture = winSheets[4].textures['P_5_A'];
-                        }
-
-                        break;
-                    case 'P_6':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[5].textures['P_6_B'];
-                            reels[1].symbols[2].texture = winSheets[5].textures['P_6_B'];
-                            reels[2].symbols[2].texture = winSheets[5].textures['P_6_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[5].textures['P_6_A'];
-                            reels[1].symbols[2].texture = winSheets[5].textures['P_6_A'];
-                            reels[2].symbols[2].texture = winSheets[5].textures['P_6_A'];
-                        }
-
-                        break;
-                    case 'P_7':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[6].textures['P_7_B'];
-                            reels[1].symbols[2].texture = winSheets[6].textures['P_7_B'];
-                            reels[2].symbols[2].texture = winSheets[6].textures['P_7_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[6].textures['P_7_A'];
-                            reels[1].symbols[2].texture = winSheets[6].textures['P_7_A'];
-                            reels[2].symbols[2].texture = winSheets[6].textures['P_7_A'];
-                        }
-
-                        break;
-                    case 'P_8':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[7].textures['P_8_B'];
-                            reels[1].symbols[2].texture = winSheets[7].textures['P_8_B'];
-                            reels[2].symbols[2].texture = winSheets[7].textures['P_8_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[7].textures['P_8_A'];
-                            reels[1].symbols[2].texture = winSheets[7].textures['P_8_A'];
-                            reels[2].symbols[2].texture = winSheets[7].textures['P_8_A'];
-                        }
-
-                        break;
-                    case 'P_9':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[8].textures['P_9_B'];
-                            reels[1].symbols[2].texture = winSheets[8].textures['P_9_B'];
-                            reels[2].symbols[2].texture = winSheets[8].textures['P_9_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[8].textures['P_9_A'];
-                            reels[1].symbols[2].texture = winSheets[8].textures['P_9_A'];
-                            reels[2].symbols[2].texture = winSheets[8].textures['P_9_A'];
-                        }
-
-                        break;
-                }
-            } else if (reels[0].tags[2] == reels[1].tags[2]) {
-                console.log(">>>>> MANJI DOBITAK <<<<<  ");
+            } else if (sameTags) {
+                console.log(">>>>> MANJI DOBITAK <<<<<");
                 lowWinText.visible = true;
-
-                switch (reels[0].tags[2]) {
-                    case 'P_1':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[0].textures['P_1_B'];
-                            reels[1].symbols[2].texture = winSheets[0].textures['P_1_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[0].textures['P_1_A'];
-                            reels[1].symbols[2].texture = winSheets[0].textures['P_1_A'];
-                        }
-
-                        break;
-                    case 'P_2':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[1].textures['P_2_B'];
-                            reels[1].symbols[2].texture = winSheets[1].textures['P_2_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[1].textures['P_2_A'];
-                            reels[1].symbols[2].texture = winSheets[1].textures['P_2_A'];
-                        }
-
-                        break;
-                    case 'P_3':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[2].textures['P_3_B'];
-                            reels[1].symbols[2].texture = winSheets[2].textures['P_3_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[2].textures['P_3_A'];
-                            reels[1].symbols[2].texture = winSheets[2].textures['P_3_A'];
-                        }
-
-                        break;
-                    case 'P_4':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[3].textures['P_4_B'];
-                            reels[1].symbols[2].texture = winSheets[3].textures['P_4_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[3].textures['P_4_A'];
-                            reels[1].symbols[2].texture = winSheets[3].textures['P_4_A'];
-                        }
-
-                        break;
-                    case 'P_5':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[4].textures['P_5_B'];
-                            reels[1].symbols[2].texture = winSheets[4].textures['P_5_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[4].textures['P_5_A'];
-                            reels[1].symbols[2].texture = winSheets[4].textures['P_5_A'];
-                        }
-
-                        break;
-                    case 'P_6':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[5].textures['P_6_B'];
-                            reels[1].symbols[2].texture = winSheets[5].textures['P_6_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[5].textures['P_6_A'];
-                            reels[1].symbols[2].texture = winSheets[5].textures['P_6_A'];
-                        }
-
-                        break;
-                    case 'P_7':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[6].textures['P_7_B'];
-                            reels[1].symbols[2].texture = winSheets[6].textures['P_7_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[6].textures['P_7_A'];
-                            reels[1].symbols[2].texture = winSheets[6].textures['P_7_A'];
-                        }
-
-                        break;
-                    case 'P_8':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[7].textures['P_8_B'];
-                            reels[1].symbols[2].texture = winSheets[7].textures['P_8_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[7].textures['P_8_A'];
-                            reels[1].symbols[2].texture = winSheets[7].textures['P_8_A'];
-                        }
-
-                        break;
-                    case 'P_9':
-                        if (anim) {
-                            reels[0].symbols[2].texture = winSheets[8].textures['P_9_B'];
-                            reels[1].symbols[2].texture = winSheets[8].textures['P_9_B'];
-                        } else {
-                            reels[0].symbols[2].texture = winSheets[8].textures['P_9_A'];
-                            reels[1].symbols[2].texture = winSheets[8].textures['P_9_A'];
-                        }
-
-                        break;
-                }
             } else {
                 console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
             }
-        }
+        
+
+            if(allSameTags || sameTags) {
+                const textureKey = `P_${tagIndex + 1}_${anim ? 'B' : 'A'}`;
+        
+                for (let i = 0; i < 2 + (allSameTags ? 1 : 0); i++) {
+                    const texture = winSheets[tagIndex].textures[textureKey];
+                    reels[i].symbols[2].texture = texture;
+                }
+            }
+        }        
     });
 
     const tweening = [];
