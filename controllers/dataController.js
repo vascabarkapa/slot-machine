@@ -45,7 +45,23 @@ const getWinSymbols = asyncHandler(async (req, res) => {
     }
 });
 
+/**
+ * @desc Return initialization of game
+ * @access Public
+ */
+const initGame = asyncHandler(async (req, res) => {
+    try {
+        const rawData = fs.readFileSync('./data/GAME.json');
+        const data = JSON.parse(rawData);
+
+        res.json(data);
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+});
+
 module.exports = {
     getReel,
-    getWinSymbols
+    getWinSymbols,
+    initGame
 }
