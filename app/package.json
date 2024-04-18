@@ -8,6 +8,7 @@
     "start": "webpack-dev-server --config webpack/base.js --open"
   },
   "dependencies": {
+    "@pixi/sound": "^6.0.0",
     "pixi.js": "^8.1.0"
   },
   "devDependencies": {
