@@ -1,7 +1,7 @@
 const express = require("express");
-const { testData } = require("../controllers/dataController");
+const { getReel } = require("../controllers/dataController");
 const router = express.Router();
 
-router.route("/reel").get(testData);
+router.route("/reel").get(getReel);
 
 module.exports = router;
