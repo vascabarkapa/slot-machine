@@ -8,6 +8,8 @@ const port = process.env.PORT || 5001;
 app.use(cors({ origin: process.env.FRONT_URL }));
 app.use(express.json());
 
+app.use("/", require("./routes/dataRoutes"));
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
