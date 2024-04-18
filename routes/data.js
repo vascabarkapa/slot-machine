@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getReel, getWinSymbols, initGame } from "../controllers/dataController";
+import { getReel, getWinSymbols, initGame } from "../controllers/index.js";
 
 const router = Router();
 

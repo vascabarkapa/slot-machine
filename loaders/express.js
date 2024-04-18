@@ -1,11 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import { prefix, frontUrl } from './../config/index.js';
-import routes from './../routes/index.js';
-import compression from 'compression';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import bodyParser from 'body-parser';
+import express from "express";
+import cors from "cors";
+import { prefix, frontUrl } from "./../config/index.js";
+import routes from "./../routes/index.js";
+import compression from "compression";
+import morgan from "morgan";
+import helmet from "helmet";
+import bodyParser from "body-parser";
 
 export default (server) => {
     server.enable('trust proxy');
