@@ -1,5 +1,7 @@
 import { Application, Assets, BlurFilter, Container, Graphics, Rectangle, Sprite, Spritesheet, Text, Texture } from "pixi.js";
+import { sound } from "@pixi/sound";
 
+import slotAudio from './../assets/audios/slot.mp3';
 import gamePng from './../assets/images/GAME.png';
 import symPng from './../assets/images/SYM.png';
 import p1Png from './../assets/images/P_1.png';
@@ -19,6 +21,8 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
     const app = new Application();
     await app.init({ background: COLOR_BLACK, resizeTo: window });
     document.body.appendChild(app.canvas);
+
+    sound.add('slot-audio', slotAudio);
 
     // Game Data
     const gameResponse = await fetch(API_URL + "/init");
@@ -209,6 +213,8 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
         lowWinText.visible = false;
         bigWinText.visible = false;
 
+        sound.play('slot-audio');
+
         console.log('STARTED SPINNING');
 
         for (let i = 0; i < reels.length; i++) {
@@ -224,6 +230,7 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
     function reelsComplete() {
         console.log('FINISHED SPINNING')
         spinning = false;
+        sound.stop('slot-audio');
     }
 
     let lastLogTime = Date.now();
@@ -265,13 +272,13 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
             }
 
             if (allSameTags) {
-                console.log(">>>>> VEĆI DOBITAK <<<<<");
+                console.log(">>>>> BIGGER WIN <<<<<");
                 bigWinText.visible = true;
             } else if (sameTags) {
-                console.log(">>>>> MANJI DOBITAK <<<<<");
+                console.log(">>>>> LESS DOBITAK <<<<<");
                 lowWinText.visible = true;
             } else {
-                console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
+                console.log("TRY AGAIN!");
             }
 
 
