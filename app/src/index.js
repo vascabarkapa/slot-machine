@@ -20,11 +20,21 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
     await app.init({ background: COLOR_BLACK, resizeTo: window });
     document.body.appendChild(app.canvas);
 
-    // Background
-    const gameAsset = await Assets.load(gamePng);
-    const gameTexture = new Texture({ source: gameAsset, frame: new Rectangle(0, 0, 2048, 1024) });
+    // Game Data
+    const gameResponse = await fetch(API_URL + "/init");
+    if (!gameResponse.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const responseInitData = await gameResponse.json();
+    const initData = responseInitData;
 
-    const gameSprite = new Sprite(gameTexture);
+    const initAsset = await Assets.load(gamePng);
+    const initTexture = new Texture(initAsset);
+
+    const initSheet = new Spritesheet(initTexture, initData);
+    await initSheet.parse();
+
+    const gameSprite = new Sprite(initSheet.textures['game']);
     gameSprite.scale = 0.75
     app.stage.addChild(gameSprite);
 
@@ -40,7 +50,6 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
     const responseSymbolsData = await symbolsResponse.json();
     const symData = responseSymbolsData;
 
-    // Symbol sheet
     const symAsset = await Assets.load(symPng);
     const symTexture = new Texture(symAsset);
 
@@ -254,7 +263,7 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
                 lastLogTime = currentTime;
                 anim = !anim;
             }
-        
+
             if (allSameTags) {
                 console.log(">>>>> VEĆI DOBITAK <<<<<");
                 bigWinText.visible = true;
@@ -264,17 +273,17 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../
             } else {
                 console.log("NEMA DOBITKA. POKUŠAJ PONOVO!");
             }
-        
 
-            if(allSameTags || sameTags) {
+
+            if (allSameTags || sameTags) {
                 const textureKey = `P_${tagIndex + 1}_${anim ? 'B' : 'A'}`;
-        
+
                 for (let i = 0; i < 2 + (allSameTags ? 1 : 0); i++) {
                     const texture = winSheets[tagIndex].textures[textureKey];
                     reels[i].symbols[2].texture = texture;
                 }
             }
-        }        
+        }
     });
 
     const tweening = [];
