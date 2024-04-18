@@ -1,16 +1,16 @@
-const express = require("express");
-const dotenv = require("dotenv").config();
-const cors = require("cors");
+import express from "express";
+import dotenv from "dotenv";
 
-const app = express();
-const port = process.env.PORT || 5001;
+dotenv.config();
 
-/* app.use(cors({ origin: process.env.FRONT_URL })); */
-app.use(cors({ origin: 'http://localhost:8080' }));
-app.use(express.json());
+const server = express();
 
-app.use("/", require("./routes/dataRoutes"));
+loader(server);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+server.listen(port, error => {
+    if (error) {
+        console.log(error);
+        return process.exit(1);
+    }
+    console.log(`Server is running on ${port}`);
 });
