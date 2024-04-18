@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import fs from "fs";
 
 /**
- * @desc Return winning symbols
+ * @desc Return array of winning symbols
  * @access Public
  */
 export default asyncHandler(async (req, res) => {
@@ -19,13 +19,16 @@ export default asyncHandler(async (req, res) => {
             'P_9.json'
         ];
 
-        const data = files.map((file) => {
-            const rawData = fs.readFileSync(`./data/${file}`);
+        const fileReadPromises = files.map(async (file) => {
+            const rawData = await fs.promises.readFile(`./data/${file}`);
             return JSON.parse(rawData);
         });
 
+        const data = await Promise.all(fileReadPromises);
+
         res.json(data);
     } catch (error) {
-        console.error("Error: ", error);
+        console.error("Error reading files:", error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });

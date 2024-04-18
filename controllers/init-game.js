@@ -7,11 +7,12 @@ import fs from "fs";
  */
 export default asyncHandler(async (req, res) => {
     try {
-        const rawData = fs.readFileSync('./data/GAME.json');
+        const rawData = await fs.promises.readFile('./data/GAME.json');
         const data = JSON.parse(rawData);
 
         res.json(data);
     } catch (error) {
-        console.error("Error: ", error);
+        console.error("Error reading file:", error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });
