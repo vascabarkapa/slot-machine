@@ -10,16 +10,7 @@ const getReel = asyncHandler(async (req, res) => {
         const rawData = fs.readFileSync('./data/SYM.json');
         const data = JSON.parse(rawData);
 
-        let reels = [];
-
-        for (let i = 0; i < 3; i++) {
-            let tempData = JSON.parse(JSON.stringify(data));
-            tempData.frames = miješajKljučeve(tempData.frames);
-
-            reels.push(tempData)
-        }
-
-        res.json(reels);
+        res.json(data);
     } catch (error) {
         console.error("Error: ", error);
     }
@@ -27,16 +18,4 @@ const getReel = asyncHandler(async (req, res) => {
 
 module.exports = {
     getReel
-}
-
-function miješajKljučeve(frames) {
-    var shuffledFrames = {};
-    var keys = Object.keys(frames);
-    keys.sort(() => Math.random() - 0.5);
-
-    for (var i = 0; i < 5; i++) {
-        shuffledFrames[keys[i]] = frames[keys[i]];
-    }
-
-    return shuffledFrames;
 }
