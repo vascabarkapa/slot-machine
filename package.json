@@ -1,6 +1,6 @@
 {
-  "name": "slot-machine",
-  "version": "0.0.1",
+  "name": "slot-machine-app",
+  "version": "1.0.0",
   "description": "Slot machine game created with PixiJS",
   "main": "index.js",
   "scripts": {
