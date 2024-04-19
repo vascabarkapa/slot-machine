@@ -53,9 +53,7 @@ import slotAudio from './../assets/audio/slot.mp3';
     async function startSpin() {
         if (spinning) return;
 
-
         symbolsSheet = await updateSymbols();
-
 
         spinning = true;
         clicked = true;
