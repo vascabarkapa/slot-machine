@@ -6,7 +6,7 @@ import { createSlotScene } from "./scenes/slotScene";
 
 // Objects
 import { createNoConnectionText } from "./objects/noConnectionText";
-import { createSymbols, updateSymbols } from "./objects/symbols";
+import { getSymbols } from "./objects/symbols";
 import { createWinningSymbols } from "./objects/winningSymbols";
 import { createReels } from "./objects/reels";
 import { createSpinButton } from "./objects/spinButton";
@@ -34,7 +34,7 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     const gameSprite = await createSlotScene(app);
 
-    let symbolsSheet = await createSymbols();
+    let symbolsSheet = await getSymbols();
 
     const winSheets = await createWinningSymbols();
 
@@ -60,7 +60,7 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     async function startSpin() {
         if (spinning) return;
-        symbolsSheet = await updateSymbols();
+        symbolsSheet = await getSymbols();
 
         spinning = true;
         clicked = true;
