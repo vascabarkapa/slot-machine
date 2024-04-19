@@ -1,17 +1,23 @@
-import { Text } from "pixi.js";
-import { sound } from "@pixi/sound";
+// Configs
+import { SYMBOL_SIZE } from "../configs/constants";
 
-import slotAudio from './../assets/audio/slot.mp3';
-
-import { COLOR_ORANGE, SYMBOL_SIZE } from "../configs/constants";
+// Utils
 import { initAppication } from "./utils/initApplication";
-import { createNoConnectionText } from "./objects/noConnectionText";
+
+// Scenes
 import { createSlotScene } from "./scenes/slotScene";
+
+// Objects
+import { createNoConnectionText } from "./objects/noConnectionText";
 import { createSymbols, updateSymbols } from "./objects/symbols";
 import { createWinningSymbols } from "./objects/winningSymbols";
 import { createReels } from "./objects/reels";
 import { createSpinButton } from "./objects/spinButton";
 import { createWinningText } from "./objects/winningText";
+
+// Sound
+import { sound } from "@pixi/sound";
+import slotAudio from './../assets/audio/slot.mp3';
 
 (async () => {
     const app = await initAppication();
