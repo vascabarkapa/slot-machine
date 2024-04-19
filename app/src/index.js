@@ -44,18 +44,19 @@ import { tweening, tweenTo } from "./utils/twinning";
 
     ////////////// Game //////////////
 
+    let clicked = false;
+    let spinning = false;
+    let animateWin = false;
+    let lastLogTime = Date.now();
+
     spinButton.eventMode = 'static';
     spinButton.cursor = 'pointer';
     spinButton.addListener('pointerdown', () => {
         startSpin();
     });
 
-    let clicked = false;
-    let spinning = false;
-
     async function startSpin() {
         if (spinning) return;
-
         symbolsSheet = await updateSymbols();
 
         spinning = true;
@@ -65,7 +66,6 @@ import { tweening, tweenTo } from "./utils/twinning";
         bigWinText.visible = false;
 
         sound.play('slot-audio');
-
         console.log('STARTED SPINNING');
 
         for (let i = 0; i < reels.length; i++) {
@@ -77,15 +77,6 @@ import { tweening, tweenTo } from "./utils/twinning";
             tweenTo(r, 'position', target, time, backoutEasing(0.5), null, i === reels.length - 1 ? reelsComplete : null);
         }
     }
-
-    function reelsComplete() {
-        console.log('FINISHED SPINNING')
-        spinning = false;
-        sound.stop('slot-audio');
-    }
-
-    let lastLogTime = Date.now();
-    let anim = false;
 
     app.ticker.add(() => {
         for (let i = 0; i < reels.length; i++) {
@@ -119,7 +110,7 @@ import { tweening, tweenTo } from "./utils/twinning";
 
             if (currentTime - lastLogTime >= 250) {
                 lastLogTime = currentTime;
-                anim = !anim;
+                animateWin = !animateWin;
             }
 
             if (allSameTags) {
@@ -134,7 +125,7 @@ import { tweening, tweenTo } from "./utils/twinning";
 
 
             if (allSameTags || sameTags) {
-                const textureKey = `P_${tagIndex + 1}_${anim ? 'B' : 'A'}`;
+                const textureKey = `P_${tagIndex + 1}_${animateWin ? 'B' : 'A'}`;
 
                 for (let i = 0; i < 2 + (allSameTags ? 1 : 0); i++) {
                     const texture = winSheets[tagIndex].textures[textureKey];
@@ -145,4 +136,10 @@ import { tweening, tweenTo } from "./utils/twinning";
     });
 
     spinningAnimation(app, tweening);
+
+    function reelsComplete() {
+        console.log('FINISHED SPINNING')
+        spinning = false;
+        sound.stop('slot-audio');
+    }
 })();
