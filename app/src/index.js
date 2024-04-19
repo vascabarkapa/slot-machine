@@ -3,8 +3,8 @@ import { SYMBOL_SIZE } from "../configs/constants";
 
 // Utils
 import { initAppication } from "./utils/initApplication";
-import { linearInterpolation } from "./utils/linearInterpolation";
 import { backoutEasing } from "./utils/backoutEasing";
+import { spinningAnimation } from "./utils/spinningAnimation";
 
 // Scenes
 import { createSlotScene } from "./scenes/slotScene";
@@ -163,25 +163,5 @@ import slotAudio from './../assets/audio/slot.mp3';
         return tween;
     }
 
-    app.ticker.add(() => {
-        const now = Date.now();
-        const remove = [];
-
-        for (let i = 0; i < tweening.length; i++) {
-            const t = tweening[i];
-            const phase = Math.min(1, (now - t.start) / t.time);
-
-            t.object[t.property] = linearInterpolation(t.propertyBeginValue, t.target, t.easing(phase));
-            if (t.change) t.change(t);
-            if (phase === 1) {
-                t.object[t.property] = t.target;
-                if (t.complete) t.complete(t);
-                remove.push(t);
-            }
-        }
-
-        for (let i = 0; i < remove.length; i++) {
-            tweening.splice(tweening.indexOf(remove[i]), 1);
-        }
-    })
+    spinningAnimation(app, tweening);
 })();
