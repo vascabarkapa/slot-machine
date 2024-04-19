@@ -1,12 +1,5 @@
 // Configs
-import { SYMBOL_SIZE } from "../configs/constants";
-
-// Utils
-import { initAppication } from "./utils/initApplication";
-import { backoutEasing } from "./utils/backoutEasing";
-import { spinningAnimation } from "./utils/spinningAnimation";
-import { tweening, tweenTo } from "./utils/twinning";
-import { checkWin } from "./utils/checkWin";
+import { NUMBER_OF_SYMBOLS, SYMBOL_SIZE } from "../configs/constants";
 
 // Scenes
 import { createSlotScene } from "./scenes/slotScene";
@@ -19,11 +12,20 @@ import { createReels } from "./objects/reels";
 import { createSpinButton } from "./objects/spinButton";
 import { createWinningText } from "./objects/winningText";
 
+// Utils
+import { initAppication } from "./utils/initApplication";
+import { backoutEasing } from "./utils/backoutEasing";
+import { spinningAnimation } from "./utils/spinningAnimation";
+import { tweening, tweenTo } from "./utils/twinning";
+import { checkWin } from "./utils/checkWin";
+
 // Sound
 import { sound } from "@pixi/sound";
 import slotAudio from './../assets/audio/slot.mp3';
 
 (async () => {
+    ////////////////// Initialization //////////////////
+
     const app = await initAppication();
 
     createNoConnectionText(app);
@@ -43,7 +45,7 @@ import slotAudio from './../assets/audio/slot.mp3';
     const lowWinText = createWinningText("YOU WON 50$!", gameSprite);
     const bigWinText = createWinningText("YOU WON 100$!", gameSprite);
 
-    ////////////// Game //////////////
+    ////////////////// Game //////////////////
 
     let clicked = false;
     let spinning = false;
@@ -99,7 +101,7 @@ import slotAudio from './../assets/audio/slot.mp3';
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+                    const tag = 'P_' + (Math.floor(Math.random() * NUMBER_OF_SYMBOLS) + 1);
                     s.texture = symbolsSheet.textures[tag];
                     r.tags[j] = tag;
 

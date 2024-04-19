@@ -1,5 +1,5 @@
 import { BlurFilter, Container, Graphics, Sprite } from "pixi.js";
-import { REEL_WIDTH, SYMBOL_SIZE } from "../../configs/constants";
+import { NUMBER_OF_SYMBOLS, REEL_WIDTH, SYMBOL_SIZE } from "../../configs/constants";
 
 export function createReels(app, symbolsSheet) {
     const reels = [];
@@ -25,7 +25,7 @@ export function createReels(app, symbolsSheet) {
         rc.filters = [reel.blur];
 
         for (let j = 0; j < 4; j++) {
-            const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+            const tag = 'P_' + (Math.floor(Math.random() * NUMBER_OF_SYMBOLS) + 1);
             const symbol = new Sprite(symbolsSheet.textures[tag]);
 
             symbol.y = j * SYMBOL_SIZE;
