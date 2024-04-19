@@ -11,6 +11,7 @@ import { createSymbols, updateSymbols } from "./objects/symbols";
 import { createWinningSymbols } from "./objects/winningSymbols";
 import { createReels } from "./objects/reels";
 import { createSpinButton } from "./objects/spinButton";
+import { createWinningText } from "./objects/winningText";
 
 (async () => {
     const app = await initAppication();
@@ -29,41 +30,8 @@ import { createSpinButton } from "./objects/spinButton";
 
     const spinButton = createSpinButton(gameSprite);
 
-    // Low win text
-    const lowWinText = new Text({
-        text: 'YOU WON 50$!',
-        style: {
-            fontFamily: 'Arial',
-            fontSize: 45,
-            fontWeight: 900,
-            fill: COLOR_ORANGE,
-            align: 'center',
-        }
-    });
-
-    lowWinText.anchor.set(0.5);
-    lowWinText.x = 0;
-    lowWinText.y = -lowWinText.height * 8.5;
-    gameSprite.addChild(lowWinText);
-    lowWinText.visible = false;
-
-    // Big win text
-    const bigWinText = new Text({
-        text: 'YOU WON 100$!',
-        style: {
-            fontFamily: 'Arial',
-            fontSize: 45,
-            fontWeight: 900,
-            fill: COLOR_ORANGE,
-            align: 'center',
-        }
-    });
-
-    bigWinText.anchor.set(0.5);
-    bigWinText.x = 0;
-    bigWinText.y = -bigWinText.height * 8.5;
-    gameSprite.addChild(bigWinText);
-    bigWinText.visible = false;
+    const lowWinText = createWinningText("YOU WON 50$!", gameSprite);
+    const bigWinText = createWinningText("YOU WON 100$!", gameSprite);
 
     ////////////// game //////////////
 
