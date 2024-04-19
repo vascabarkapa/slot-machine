@@ -3,8 +3,8 @@ import { SYMBOL_SIZE } from "../configs/constants";
 
 // Utils
 import { initAppication } from "./utils/initApplication";
-import { lerp } from "./utils/lerp";
-import { backout } from "./utils/backout";
+import { linearInterpolation } from "./utils/linearInterpolation";
+import { backoutEasing } from "./utils/backoutEasing";
 
 // Scenes
 import { createSlotScene } from "./scenes/slotScene";
@@ -73,7 +73,7 @@ import slotAudio from './../assets/audio/slot.mp3';
             const target = Math.ceil((r.position + 50 + i * 5 + extra) / 100) * 100;;
             const time = 3000 + i * 800;
 
-            tweenTo(r, 'position', target, time, backout(0.5), null, i === reels.length - 1 ? reelsComplete : null);
+            tweenTo(r, 'position', target, time, backoutEasing(0.5), null, i === reels.length - 1 ? reelsComplete : null);
         }
     }
 
@@ -171,7 +171,7 @@ import slotAudio from './../assets/audio/slot.mp3';
             const t = tweening[i];
             const phase = Math.min(1, (now - t.start) / t.time);
 
-            t.object[t.property] = lerp(t.propertyBeginValue, t.target, t.easing(phase));
+            t.object[t.property] = linearInterpolation(t.propertyBeginValue, t.target, t.easing(phase));
             if (t.change) t.change(t);
             if (phase === 1) {
                 t.object[t.property] = t.target;
@@ -179,6 +179,7 @@ import slotAudio from './../assets/audio/slot.mp3';
                 remove.push(t);
             }
         }
+
         for (let i = 0; i < remove.length; i++) {
             tweening.splice(tweening.indexOf(remove[i]), 1);
         }
