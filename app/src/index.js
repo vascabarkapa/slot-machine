@@ -238,7 +238,7 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE 
             const r = reels[i];
             const extra = i;
             const target = Math.ceil((r.position + 50 + i * 5 + extra) / 100) * 100;;
-            const time = 1500 + i * 600 + extra * 600;
+            const time = 3000 + i * 800;
 
             tweenTo(r, 'position', target, time, backout(0.5), null, i === reels.length - 1 ? reelsComplete : null);
         }
