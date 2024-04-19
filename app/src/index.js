@@ -1,22 +1,14 @@
-import { Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Texture } from "pixi.js";
+import { BlurFilter, Container, Graphics, Sprite, Text } from "pixi.js";
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audio/slot.mp3';
-import p1Png from './../assets/sprites/P_1.png';
-import p2Png from './../assets/sprites/P_2.png';
-import p3Png from './../assets/sprites/P_3.png';
-import p4Png from './../assets/sprites/P_4.png';
-import p5Png from './../assets/sprites/P_5.png';
-import p6Png from './../assets/sprites/P_6.png';
-import p7Png from './../assets/sprites/P_7.png';
-import p8Png from './../assets/sprites/P_8.png';
-import p9Png from './../assets/sprites/P_9.png';
 
-import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
+import { COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 import { initAppication } from "./utils/initApplication";
 import { createNoConnectionText } from "./objects/noConnectionText";
 import { createSlotScene } from "./scenes/slotScene";
 import { createSymbols, updateSymbols } from "./objects/symbols";
+import { createWinningSymbols } from "./objects/winningSymbols";
 
 (async () => {
     const app = await initAppication();
@@ -29,25 +21,7 @@ import { createSymbols, updateSymbols } from "./objects/symbols";
 
     let symbolsSheet = await createSymbols();
 
-    // Win Data
-    const winResponse = await fetch(API_URL + "/win");
-    if (!winResponse.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const responseWinData = await winResponse.json();
-    const winData = responseWinData;
-
-    const winSheets = [];
-    const imageObjects = { p1: p1Png, p2: p2Png, p3: p3Png, p4: p4Png, p5: p5Png, p6: p6Png, p7: p7Png, p8: p8Png, p9: p9Png };
-
-    for (let i = 1; i <= 9; i++) {
-        const imageName = `p${i}`;
-        const winAsset = await Assets.load(imageObjects[imageName]);
-        const winTexture = new Texture(winAsset);
-        const winSheet = new Spritesheet(winTexture, winData[i - 1]);
-        await winSheet.parse();
-        winSheets.push(winSheet);
-    }
+    const winSheets = await createWinningSymbols();
 
     const reels = [];
     const reelContainer = new Container();
@@ -224,7 +198,7 @@ import { createSymbols, updateSymbols } from "./objects/symbols";
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
+                    const tag = 'P_' + (Math.floor(Math.random() * 2) + 1);
                     s.texture = symbolsSheet.textures[tag];
                     r.tags[j] = tag;
 
@@ -249,7 +223,7 @@ import { createSymbols, updateSymbols } from "./objects/symbols";
                 console.log(">>>>> BIGGER WIN <<<<<");
                 bigWinText.visible = true;
             } else if (sameTags) {
-                console.log(">>>>> LESS DOBITAK <<<<<");
+                console.log(">>>>> LESS WIN <<<<<");
                 lowWinText.visible = true;
             } else {
                 console.log("TRY AGAIN!");
