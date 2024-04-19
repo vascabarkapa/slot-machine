@@ -20,6 +20,7 @@ import { createWinningText } from "./objects/winningText";
 // Sound
 import { sound } from "@pixi/sound";
 import slotAudio from './../assets/audio/slot.mp3';
+import { tweening, tweenTo } from "./utils/twinning";
 
 (async () => {
     const app = await initAppication();
@@ -142,26 +143,6 @@ import slotAudio from './../assets/audio/slot.mp3';
             }
         }
     });
-
-    const tweening = [];
-
-    function tweenTo(object, property, target, time, easing, onchange, oncomplete) {
-        const tween = {
-            object,
-            property,
-            propertyBeginValue: object[property],
-            target,
-            easing,
-            time,
-            change: onchange,
-            complete: oncomplete,
-            start: Date.now(),
-        };
-
-        tweening.push(tween);
-
-        return tween;
-    }
 
     spinningAnimation(app, tweening);
 })();
