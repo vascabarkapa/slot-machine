@@ -1,4 +1,5 @@
 import { Assets, Spritesheet, Texture } from "pixi.js";
+import { createInformationText } from "./informationText";
 import { API_URL } from "../../configs/constants";
 
 import p1Png from './../../assets/sprites/P_1.png';
@@ -11,7 +12,7 @@ import p7Png from './../../assets/sprites/P_7.png';
 import p8Png from './../../assets/sprites/P_8.png';
 import p9Png from './../../assets/sprites/P_9.png';
 
-export async function createWinningSymbols() {
+export async function createWinningSymbols(app) {
     const winSheets = [];
     const imageObjects = { p1: p1Png, p2: p2Png, p3: p3Png, p4: p4Png, p5: p5Png, p6: p6Png, p7: p7Png, p8: p8Png, p9: p9Png };
 
@@ -39,7 +40,9 @@ export async function createWinningSymbols() {
         }
     } catch (error) {
         console.error('Error fetching win data:', error);
-        createInformationText('Error fetching win symbols! Please check your network connection and try again!', app);
+
+        app.stage.removeChildren();
+        createInformationText('Server error. Please check your network connection and try again!', app);
 
         setInterval(() => {
             location.reload();

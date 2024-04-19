@@ -1,8 +1,8 @@
 import { Assets, Sprite, Spritesheet, Texture } from "pixi.js";
-import { API_URL, COLOR_BLACK } from "../../configs/constants";
+import { API_URL } from "../../configs/constants";
+import { createInformationText } from "../objects/informationText";
 
 import gamePng from './../../assets/sprites/GAME.png';
-import { createInformationText } from "../objects/informationText";
 
 export async function createSlotScene(app) {
     try {
@@ -32,9 +32,9 @@ export async function createSlotScene(app) {
         return gameSprite;
     } catch (error) {
         console.error('Connection error:', error);
-        app.stage.getChildAt(0).destroy();
 
-        createInformationText('Connection failed. Please check your network connection and try again!', app);
+        app.stage.removeChildren();
+        createInformationText('Server error. Please check your network connection and try again!', app);
 
         setInterval(() => {
             location.reload();

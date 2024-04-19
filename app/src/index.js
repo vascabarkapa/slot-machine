@@ -34,9 +34,9 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     const gameSprite = await createSlotScene(app);
 
-    let symbolsSheet = await getSymbols();
+    let symbolsSheet = await getSymbols(app);
 
-    const winSheets = await createWinningSymbols();
+    const winSheets = await createWinningSymbols(app);
 
     const reels = createReels(app, symbolsSheet);
 
@@ -60,7 +60,7 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     async function startSpin() {
         if (spinning) return;
-        symbolsSheet = await getSymbols();
+        symbolsSheet = await getSymbols(app);
 
         spinning = true;
         clicked = true;

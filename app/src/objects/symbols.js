@@ -1,9 +1,10 @@
 import { Assets, Spritesheet, Texture } from "pixi.js";
 import { API_URL } from "../../configs/constants";
+import { createInformationText } from "./informationText";
 
 import symPng from './../../assets/sprites/SYM.png';
 
-export async function getSymbols() {
+export async function getSymbols(app) {
     try {
         const symbolsResponse = await fetch(API_URL + "/reel");
         if (!symbolsResponse.ok) {
@@ -21,7 +22,9 @@ export async function getSymbols() {
         return symbolsSheet;
     } catch (error) {
         console.error("Error fetching symbols:", error);
-        createInformationText('Error fetching symbols! Please check your network connection and try again!', app);
+        
+        app.stage.removeChildren();
+        createInformationText('Server error. Please check your network connection and try again!', app);
 
         setInterval(() => {
             location.reload();
