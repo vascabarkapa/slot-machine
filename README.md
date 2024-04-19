@@ -22,19 +22,37 @@ To run the game locally, make sure you have [Node.js](https://nodejs.org/) insta
    cd slot-machine
    ```
 
-3. Install the dependencies:
+3. Install the dependencies for the backend:
 
    ```bash
    npm install
    ```
 
-4. Start the development server:
+4. Start the backend server:
 
    ```bash
    npm start
    ```
 
-5. Open your web browser and visit [http://localhost:8000](http://localhost:8000) to play the game.
+5. Then navigate to the frontend directory:
+
+   ```bash
+   cd app
+   ```
+
+6. Install the dependencies for the frontend:W
+
+   ```bash
+   npm install
+   ```
+
+7. Start the frontend development server:
+
+   ```bash
+   npm start
+   ```
+
+8. Open your web browser and visit [http://localhost:8000](http://localhost:8000) to play the game.
 
 ## Contributing
 
