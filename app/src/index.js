@@ -42,8 +42,8 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     const spinButton = createSpinButton(gameSprite);
 
-    const lowWinText = createWinningText("YOU WON 50$!", gameSprite);
-    const bigWinText = createWinningText("YOU WON 100$!", gameSprite);
+    const lowWinText = createWinningText("YOU WON 50$!", app);
+    const bigWinText = createWinningText("YOU WON 100$!", app);
 
     ////////////////// Game //////////////////
 
