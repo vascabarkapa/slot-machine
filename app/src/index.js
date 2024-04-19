@@ -16,26 +16,12 @@ import p9Png from './../assets/sprites/P_9.png';
 
 import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 import { initAppication } from "./utils/initApplication";
+import { createNoConnectionText } from "./objects/noConnectionText";
 
 (async () => {
     const app = await initAppication();
 
-    // Check connection
-    const noConnectionText = new Text({
-        text: 'Connection failed. Please check your network connection and try again.',
-        style: {
-            fontFamily: 'Arial',
-            fontSize: 20,
-            fontWeight: 900,
-            fill: COLOR_RED,
-            align: 'center',
-        }
-    });
-
-    noConnectionText.anchor.set(0.5);
-    noConnectionText.x = app.screen.width / 2;
-    noConnectionText.y = app.screen.height / 2;
-    app.stage.addChild(noConnectionText);
+    createNoConnectionText(app);
 
     sound.add('slot-audio', slotAudio);
 
