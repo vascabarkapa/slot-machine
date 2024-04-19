@@ -2,7 +2,6 @@ import { Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Tex
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audio/slot.mp3';
-import gamePng from './../assets/sprites/GAME.png';
 import symPng from './../assets/sprites/SYM.png';
 import p1Png from './../assets/sprites/P_1.png';
 import p2Png from './../assets/sprites/P_2.png';
@@ -17,35 +16,16 @@ import p9Png from './../assets/sprites/P_9.png';
 import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 import { initAppication } from "./utils/initApplication";
 import { createNoConnectionText } from "./objects/noConnectionText";
+import { createSlotScene } from "./scenes/slotScene";
 
 (async () => {
     const app = await initAppication();
-
     createNoConnectionText(app);
 
     sound.add('slot-audio', slotAudio);
 
     // Game Data
-    const gameResponse = await fetch(API_URL + "/init");
-    if (!gameResponse.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const responseInitData = await gameResponse.json();
-    const initData = responseInitData;
-
-    const initAsset = await Assets.load(gamePng);
-    const initTexture = new Texture(initAsset);
-
-    const initSheet = new Spritesheet(initTexture, initData);
-    await initSheet.parse();
-
-    const gameSprite = new Sprite(initSheet.textures['game']);
-    gameSprite.scale = 0.75
-    app.stage.addChild(gameSprite);
-
-    gameSprite.anchor.set(0.5);
-    gameSprite.x = app.screen.width / 2;
-    gameSprite.y = app.screen.height / 2;
+    const gameSprite = await createSlotScene(app);
 
     // Symbols Data
     const symbolsResponse = await fetch(API_URL + "/reel");
