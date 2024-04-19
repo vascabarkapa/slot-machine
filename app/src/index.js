@@ -5,6 +5,8 @@ import { SYMBOL_SIZE } from "../configs/constants";
 import { initAppication } from "./utils/initApplication";
 import { backoutEasing } from "./utils/backoutEasing";
 import { spinningAnimation } from "./utils/spinningAnimation";
+import { tweening, tweenTo } from "./utils/twinning";
+import { checkWin } from "./utils/checkWin";
 
 // Scenes
 import { createSlotScene } from "./scenes/slotScene";
@@ -20,8 +22,6 @@ import { createWinningText } from "./objects/winningText";
 // Sound
 import { sound } from "@pixi/sound";
 import slotAudio from './../assets/audio/slot.mp3';
-import { tweening, tweenTo } from "./utils/twinning";
-import { checkWin } from "./utils/checkWin";
 
 (async () => {
     const app = await initAppication();
@@ -79,6 +79,12 @@ import { checkWin } from "./utils/checkWin";
         }
     }
 
+    function reelsComplete() {
+        spinning = false;
+        console.log('FINISHED SPINNING')
+        sound.stop('slot-audio');
+    }
+
     app.ticker.add(() => {
         for (let i = 0; i < reels.length; i++) {
             const r = reels[i];
@@ -93,7 +99,7 @@ import { checkWin } from "./utils/checkWin";
                 s.y = ((r.position + j) % r.symbols.length) * SYMBOL_SIZE - SYMBOL_SIZE - 20;
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
-                    const tag = 'P_' + (Math.floor(Math.random() * 2) + 1);
+                    const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
                     s.texture = symbolsSheet.textures[tag];
                     r.tags[j] = tag;
 
@@ -112,10 +118,4 @@ import { checkWin } from "./utils/checkWin";
     });
 
     spinningAnimation(app, tweening);
-
-    function reelsComplete() {
-        console.log('FINISHED SPINNING')
-        spinning = false;
-        sound.stop('slot-audio');
-    }
 })();
