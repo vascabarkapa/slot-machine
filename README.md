@@ -10,7 +10,7 @@ This is a simple slot machine game built using PixiJS, a 2D WebGL rendering libr
 
 ## Demo
 
-To experience the application in action, simply click on the following link: [Live Demo](https://slot-machine.netlify.app/). This will redirect you to the live demo where you can interact with the application and explore its features firsthand.
+To experience the application in action, simply click on the following link: [SLOT GAME](https://slot-machine.netlify.app/). This will redirect you to the live demo where you can interact with the application and explore its features firsthand.
 
 ## Installation
 
