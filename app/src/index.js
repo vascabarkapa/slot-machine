@@ -1,18 +1,18 @@
 import { Application, Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Texture } from "pixi.js";
 import { sound } from "@pixi/sound";
 
-import slotAudio from './../assets/audios/slot.mp3';
-import gamePng from './../assets/images/GAME.png';
-import symPng from './../assets/images/SYM.png';
-import p1Png from './../assets/images/P_1.png';
-import p2Png from './../assets/images/P_2.png';
-import p3Png from './../assets/images/P_3.png';
-import p4Png from './../assets/images/P_4.png';
-import p5Png from './../assets/images/P_5.png';
-import p6Png from './../assets/images/P_6.png';
-import p7Png from './../assets/images/P_7.png';
-import p8Png from './../assets/images/P_8.png';
-import p9Png from './../assets/images/P_9.png';
+import slotAudio from './../assets/audio/slot.mp3';
+import gamePng from './../assets/sprites/GAME.png';
+import symPng from './../assets/sprites/SYM.png';
+import p1Png from './../assets/sprites/P_1.png';
+import p2Png from './../assets/sprites/P_2.png';
+import p3Png from './../assets/sprites/P_3.png';
+import p4Png from './../assets/sprites/P_4.png';
+import p5Png from './../assets/sprites/P_5.png';
+import p6Png from './../assets/sprites/P_6.png';
+import p7Png from './../assets/sprites/P_7.png';
+import p8Png from './../assets/sprites/P_8.png';
+import p9Png from './../assets/sprites/P_9.png';
 
 import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 
