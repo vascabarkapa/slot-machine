@@ -2,7 +2,6 @@ import { Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Tex
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audio/slot.mp3';
-import symPng from './../assets/sprites/SYM.png';
 import p1Png from './../assets/sprites/P_1.png';
 import p2Png from './../assets/sprites/P_2.png';
 import p3Png from './../assets/sprites/P_3.png';
@@ -17,33 +16,22 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE 
 import { initAppication } from "./utils/initApplication";
 import { createNoConnectionText } from "./objects/noConnectionText";
 import { createSlotScene } from "./scenes/slotScene";
+import { createSymbols, updateSymbols } from "./objects/symbols";
 
 (async () => {
     const app = await initAppication();
+
     createNoConnectionText(app);
 
     sound.add('slot-audio', slotAudio);
 
-    // Game Data
     const gameSprite = await createSlotScene(app);
 
-    // Symbols Data
-    const symbolsResponse = await fetch(API_URL + "/reel");
-    if (!symbolsResponse.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const responseSymbolsData = await symbolsResponse.json();
-    const symData = responseSymbolsData;
-
-    const symAsset = await Assets.load(symPng);
-    const symTexture = new Texture(symAsset);
-
-    const sheet = new Spritesheet(symTexture, symData);
-    await sheet.parse();
+    let symbolsSheet = await createSymbols();
 
     // Win Data
     const winResponse = await fetch(API_URL + "/win");
-    if (!symbolsResponse.ok) {
+    if (!winResponse.ok) {
         throw new Error('Network response was not ok');
     }
     const responseWinData = await winResponse.json();
@@ -86,7 +74,7 @@ import { createSlotScene } from "./scenes/slotScene";
 
         for (let j = 0; j < 4; j++) {
             const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
-            const symbol = new Sprite(sheet.textures[tag]);
+            const symbol = new Sprite(symbolsSheet.textures[tag]);
 
             symbol.y = j * SYMBOL_SIZE;
             symbol.scale.x = symbol.scale.y = Math.min(SYMBOL_SIZE / symbol.width * 1.5, SYMBOL_SIZE / symbol.height * 1.5);
@@ -190,19 +178,7 @@ import { createSlotScene } from "./scenes/slotScene";
         if (spinning) return;
 
 
-        // Symbols Data
-        const symbolsResponse = await fetch(API_URL + "/reel");
-        if (!symbolsResponse.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const responseSymbolsData = await symbolsResponse.json();
-        const symData = responseSymbolsData;
-
-        const symAsset = await Assets.load(symPng);
-        const symTexture = new Texture(symAsset);
-
-        const sheet = new Spritesheet(symTexture, symData);
-        await sheet.parse();
+        symbolsSheet = await updateSymbols();
 
 
         spinning = true;
@@ -249,7 +225,7 @@ import { createSlotScene } from "./scenes/slotScene";
 
                 if (s.y < 0 && prevY > SYMBOL_SIZE) {
                     const tag = 'P_' + (Math.floor(Math.random() * 9) + 1);
-                    s.texture = sheet.textures[tag];
+                    s.texture = symbolsSheet.textures[tag];
                     r.tags[j] = tag;
 
                     s.scale.x = s.scale.y = Math.min(SYMBOL_SIZE / s.texture.width * 1.5, SYMBOL_SIZE / s.texture.height * 1.5);
