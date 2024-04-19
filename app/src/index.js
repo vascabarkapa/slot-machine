@@ -222,8 +222,25 @@ import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE 
     let clicked = false;
     let spinning = false;
 
-    function startSpin() {
+    async function startSpin() {
         if (spinning) return;
+
+
+        // Symbols Data
+        const symbolsResponse = await fetch(API_URL + "/reel");
+        if (!symbolsResponse.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const responseSymbolsData = await symbolsResponse.json();
+        const symData = responseSymbolsData;
+
+        const symAsset = await Assets.load(symPng);
+        const symTexture = new Texture(symAsset);
+
+        const sheet = new Spritesheet(symTexture, symData);
+        await sheet.parse();
+
+
         spinning = true;
         clicked = true;
 
