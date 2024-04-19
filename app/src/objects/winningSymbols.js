@@ -15,22 +15,35 @@ export async function createWinningSymbols() {
     const winSheets = [];
     const imageObjects = { p1: p1Png, p2: p2Png, p3: p3Png, p4: p4Png, p5: p5Png, p6: p6Png, p7: p7Png, p8: p8Png, p9: p9Png };
 
-    const winResponse = await fetch(API_URL + "/win");
+    try {
+        const winResponse = await fetch(API_URL + "/win");
 
-    if (!winResponse.ok) {
-        throw new Error('Network response was not ok');
-    }
+        if (!winResponse.ok) {
+            throw new Error('Network response was not ok');
+        }
 
-    const responseWinData = await winResponse.json();
-    const winData = responseWinData;
+        const responseWinData = await winResponse.json();
+        const winData = responseWinData;
 
-    for (let i = 1; i <= 9; i++) {
-        const imageName = `p${i}`;
-        const winAsset = await Assets.load(imageObjects[imageName]);
-        const winTexture = new Texture(winAsset);
-        const winSheet = new Spritesheet(winTexture, winData[i - 1]);
-        await winSheet.parse();
-        winSheets.push(winSheet);
+        for (let i = 1; i <= 9; i++) {
+            const imageName = `p${i}`;
+            try {
+                const winAsset = await Assets.load(imageObjects[imageName]);
+                const winTexture = new Texture(winAsset);
+                const winSheet = new Spritesheet(winTexture, winData[i - 1]);
+                await winSheet.parse();
+                winSheets.push(winSheet);
+            } catch (error) {
+                console.error(`Error loading image ${imageName}:`, error);
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching win data:', error);
+        createInformationText('Error fetching win symbols! Please check your network connection and try again!', app);
+
+        setInterval(() => {
+            location.reload();
+        }, 3000);
     }
 
     return winSheets;
