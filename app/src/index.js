@@ -5,7 +5,7 @@ import { NUMBER_OF_SYMBOLS, SYMBOL_SIZE } from "../configs/constants";
 import { createSlotScene } from "./scenes/slotScene";
 
 // Objects
-import { createNoConnectionText } from "./objects/noConnectionText";
+import { createInformationText } from "./objects/informationText";
 import { getSymbols } from "./objects/symbols";
 import { createWinningSymbols } from "./objects/winningSymbols";
 import { createReels } from "./objects/reels";
@@ -28,7 +28,7 @@ import slotAudio from './../assets/audio/slot.mp3';
 
     const app = await initAppication();
 
-    createNoConnectionText(app);
+    createInformationText('Loading...', app);
 
     sound.add('slot-audio', slotAudio);
 
