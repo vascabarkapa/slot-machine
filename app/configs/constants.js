@@ -2,6 +2,7 @@
 export const API_URL = 'http://localhost:5000/api';
 
 // Colors
+export const COLOR_RED = '#FF0000';
 export const COLOR_BLACK = '#000000';
 export const COLOR_ORANGE = '#FFA500';
 

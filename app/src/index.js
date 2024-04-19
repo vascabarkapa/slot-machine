@@ -14,13 +14,30 @@ import p7Png from './../assets/images/P_7.png';
 import p8Png from './../assets/images/P_8.png';
 import p9Png from './../assets/images/P_9.png';
 
-import { API_URL, COLOR_BLACK, COLOR_ORANGE, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
+import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
 
 (async () => {
     // Init App
     const app = new Application();
     await app.init({ background: COLOR_BLACK, resizeTo: window });
     document.body.appendChild(app.canvas);
+
+    // Check connection
+    const noConnectionText = new Text({
+        text: 'Connection failed. Please check your network connection and try again.',
+        style: {
+            fontFamily: 'Arial',
+            fontSize: 20,
+            fontWeight: 900,
+            fill: COLOR_RED,
+            align: 'center',
+        }
+    });
+
+    noConnectionText.anchor.set(0.5);
+    noConnectionText.x = app.screen.width / 2;
+    noConnectionText.y = app.screen.height / 2;
+    app.stage.addChild(noConnectionText);
 
     sound.add('slot-audio', slotAudio);
 
