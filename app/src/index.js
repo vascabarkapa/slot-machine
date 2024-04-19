@@ -3,6 +3,8 @@ import { SYMBOL_SIZE } from "../configs/constants";
 
 // Utils
 import { initAppication } from "./utils/initApplication";
+import { lerp } from "./utils/lerp";
+import { backout } from "./utils/backout";
 
 // Scenes
 import { createSlotScene } from "./scenes/slotScene";
@@ -39,7 +41,7 @@ import slotAudio from './../assets/audio/slot.mp3';
     const lowWinText = createWinningText("YOU WON 50$!", gameSprite);
     const bigWinText = createWinningText("YOU WON 100$!", gameSprite);
 
-    ////////////// game //////////////
+    ////////////// Game //////////////
 
     spinButton.eventMode = 'static';
     spinButton.cursor = 'pointer';
@@ -181,12 +183,4 @@ import slotAudio from './../assets/audio/slot.mp3';
             tweening.splice(tweening.indexOf(remove[i]), 1);
         }
     })
-
-    function lerp(a1, a2, t) {
-        return a1 * (1 - t) + a2 * t;
-    }
-
-    function backout(amount) {
-        return (t) => --t * t * ((amount + 1) * t + amount) + 1;
-    }
 })();
