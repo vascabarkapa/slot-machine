@@ -29,5 +29,5 @@ export function checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels,
         }
     }
 
-    return {lastLogTime, animateWin};
+    return { lastLogTime, animateWin };
 }
