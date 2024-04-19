@@ -1,4 +1,4 @@
-import { Application, Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Texture } from "pixi.js";
+import { Assets, BlurFilter, Container, Graphics, Sprite, Spritesheet, Text, Texture } from "pixi.js";
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audio/slot.mp3';
@@ -15,12 +15,10 @@ import p8Png from './../assets/sprites/P_8.png';
 import p9Png from './../assets/sprites/P_9.png';
 
 import { API_URL, COLOR_BLACK, COLOR_ORANGE, COLOR_RED, REEL_WIDTH, SYMBOL_SIZE } from "../configs/constants";
+import { initAppication } from "./utils/initApplication";
 
 (async () => {
-    // Init App
-    const app = new Application();
-    await app.init({ background: COLOR_BLACK, resizeTo: window });
-    document.body.appendChild(app.canvas);
+    const app = await initAppication();
 
     // Check connection
     const noConnectionText = new Text({
