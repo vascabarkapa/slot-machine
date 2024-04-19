@@ -1,3 +1,5 @@
+<img src="./app/assets/logo/jackpot-logo.png" alt="logo" width="150"/>
+
 # Slot Machine
 
 Slot machine game created with PixiJS.
