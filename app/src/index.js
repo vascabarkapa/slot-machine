@@ -1,15 +1,16 @@
-import { Graphics, Text } from "pixi.js";
+import { Text } from "pixi.js";
 import { sound } from "@pixi/sound";
 
 import slotAudio from './../assets/audio/slot.mp3';
 
-import { COLOR_BLACK, COLOR_ORANGE, SYMBOL_SIZE } from "../configs/constants";
+import { COLOR_ORANGE, SYMBOL_SIZE } from "../configs/constants";
 import { initAppication } from "./utils/initApplication";
 import { createNoConnectionText } from "./objects/noConnectionText";
 import { createSlotScene } from "./scenes/slotScene";
 import { createSymbols, updateSymbols } from "./objects/symbols";
 import { createWinningSymbols } from "./objects/winningSymbols";
 import { createReels } from "./objects/reels";
+import { createSpinButton } from "./objects/spinButton";
 
 (async () => {
     const app = await initAppication();
@@ -26,31 +27,7 @@ import { createReels } from "./objects/reels";
 
     const reels = createReels(app, symbolsSheet);
 
-    // Spin button
-    const spinButton = new Graphics()
-        .roundRect(0, 0, 220, 60, 20)
-        .fill(COLOR_BLACK)
-        .stroke({ color: COLOR_ORANGE, width: 2 });
-
-    spinButton.x = -spinButton.width / 2;
-    spinButton.y = gameSprite.height / 2;
-    gameSprite.addChild(spinButton);
-
-    const spinText = new Text({
-        text: 'SPIN!',
-        style: {
-            fontFamily: 'Arial',
-            fontSize: 45,
-            fontWeight: 900,
-            fill: COLOR_ORANGE,
-            align: 'center',
-        }
-    });
-
-    spinText.anchor.set(0.5);
-    spinText.x = spinButton.width / 2;
-    spinText.y = spinButton.height / 2;
-    spinButton.addChild(spinText);
+    const spinButton = createSpinButton(gameSprite);
 
     // Low win text
     const lowWinText = new Text({
