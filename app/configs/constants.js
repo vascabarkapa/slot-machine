@@ -1,6 +1,6 @@
 // Configs
 export const API_URL = 'http://localhost:5000/api';
-export const NUMBER_OF_SYMBOLS = 9;
+export const NUMBER_OF_SYMBOLS = 9; // 1-9
 
 // Colors
 export const COLOR_RED = '#FF0000';

@@ -22,43 +22,53 @@ To run the game locally, make sure you have [Node.js](https://nodejs.org/) insta
    git clone https://github.com/vascabarkapa/slot-machine.git
    ```
 
-2. Navigate to the project directory:
+2. Set up the environment variables for backend:
+
+   ```bash
+   PORT="Specifies the port on which your application will listen for HTTP requests"
+   API_URL="Specifies the URL of your API service, e.g. http://localhost:5000/"
+   FRONT_URL="URL for the frontend application, e.g. http://localhost:8080/"
+   ```
+
+3. Navigate to the project directory:
 
    ```bash
    cd slot-machine
    ```
 
-3. Install the dependencies for the backend:
+4. Install the dependencies for the backend:
 
    ```bash
    npm install
    ```
 
-4. Start the backend server:
+5. Start the backend server:
 
    ```bash
    npm start
    ```
 
-5. Then navigate to the frontend directory:
+6. Then navigate to the frontend directory:
 
    ```bash
    cd app
    ```
 
-6. Install the dependencies for the frontend:W
+7. Install the dependencies for the frontend:W
 
    ```bash
    npm install
    ```
 
-7. Start the frontend development server:
+8. Start the frontend development server:
 
    ```bash
    npm start
    ```
 
-8. Open your web browser and visit [http://localhost:8000](http://localhost:8000) to play the game.
+10. In the app's configuration file `app/configs/constants.js`, you have the option to adjust the **NUMBER_OF_SYMBOLS** field. This setting determines the quantity of symbols displayed in the game, thereby influencing the game's difficulty level.
+
+9. Open your web browser and visit [http://localhost:8000](http://localhost:8000) to play the game.
 
 ## Contributing
 
