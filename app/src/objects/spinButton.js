@@ -8,7 +8,7 @@ export function createSpinButton(gameSprite) {
         .stroke({ color: COLOR_ORANGE, width: 2 });
 
     spinButton.x = -spinButton.width / 2;
-    spinButton.y = gameSprite.height / 2;
+    spinButton.y = gameSprite.height / 2.3;
     gameSprite.addChild(spinButton);
 
     const spinText = new Text({
