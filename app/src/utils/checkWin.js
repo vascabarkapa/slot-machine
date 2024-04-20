@@ -1,4 +1,4 @@
-export function checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels, winSheets) {
+export function checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels, winSheets, sound) {
     const currentTime = Date.now();
     const sameTags = reels[0].tags[2] == reels[1].tags[2];
     const allSameTags = sameTags && reels[0].tags[2] == reels[2].tags[2];
@@ -10,15 +10,14 @@ export function checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels,
     }
 
     if (allSameTags) {
+        handleWinCondition(bigWinText, sound);
         console.log(">>>>> BIGGER WIN <<<<<");
-        bigWinText.visible = true;
     } else if (sameTags) {
+        handleWinCondition(lowWinText, sound);
         console.log(">>>>> LESS WIN <<<<<");
-        lowWinText.visible = true;
     } else {
         console.log("TRY AGAIN!");
     }
-
 
     if (allSameTags || sameTags) {
         const textureKey = `P_${tagIndex + 1}_${animateWin ? 'B' : 'A'}`;
@@ -30,4 +29,12 @@ export function checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels,
     }
 
     return { lastLogTime, animateWin };
+}
+
+
+function handleWinCondition(winText, sound) {
+    if (!winText.visible) {
+        sound.play('win-audio');
+    }
+    winText.visible = true;
 }

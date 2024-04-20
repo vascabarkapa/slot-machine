@@ -22,6 +22,7 @@ import { checkWin } from "./utils/checkWin";
 // Sound
 import { sound } from "@pixi/sound";
 import slotAudio from './../assets/audio/slot.mp3';
+import winSound from './../assets/audio/win.mp3';
 
 (async () => {
     ////////////////// Initialization //////////////////
@@ -31,6 +32,7 @@ import slotAudio from './../assets/audio/slot.mp3';
     createInformationText('Loading...', app);
 
     sound.add('slot-audio', slotAudio);
+    sound.add('win-audio', winSound);
 
     const gameSprite = await createSlotScene(app);
 
@@ -68,6 +70,7 @@ import slotAudio from './../assets/audio/slot.mp3';
         lowWinText.visible = false;
         bigWinText.visible = false;
 
+        sound.stop('win-audio');
         sound.play('slot-audio');
         console.log('STARTED SPINNING');
 
@@ -112,8 +115,7 @@ import slotAudio from './../assets/audio/slot.mp3';
         }
 
         if (clicked && !spinning) {
-            const result = checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels, winSheets);
-
+            const result = checkWin(lastLogTime, animateWin, bigWinText, lowWinText, reels, winSheets, sound);
             lastLogTime = result.lastLogTime;
             animateWin = result.animateWin;
         }
